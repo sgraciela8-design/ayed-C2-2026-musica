@@ -30,7 +30,6 @@ def operacion_recursiva():
     try:
         id_cancion = int(input("Ingresá el ID de la canción inicial: "))
         versiones = biblioteca.obtener_todas_las_versiones_recursivo(id_cancion)
-        
         if versiones:
             print(f"\nVersiones encontradas ({len(versiones)}):")
             for v in versiones:
