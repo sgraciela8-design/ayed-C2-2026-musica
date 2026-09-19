@@ -1,10 +1,16 @@
-catalogo_canciones = [
-    {"id": 1, "Titulo": "Crimen", "Artista": "Gustavo Cerati","Album": "Fuerza natural", "año": "2006"},
-    {"id": 2, "Titulo": "Adios", "Artista": "Gustavo Cerati", "Album": "Fuerza natural", "año": "2006"},
-    {"id": 3, "Titulo": "Here Comes the Sun", "Artista": "The Beatles","Album": "Abbey Road", "año": "1969"},
-    {"id": 4, "Titulo": "Creep", "Artista": "Radiohead" , "Album": "Album de estudio", "año": "1992"},
-    {"id": 5, "Titulo": "505", "Artista": "Artic Monkeys", "Album": "Favorite Worts", "año": "2013"},
-    {"id": 6, "Titulo": "Demoliendo Hoteles", "Artista": "Charly Garcia", "Album": "Piano Bar", "año": "1984"} 
-]
-def obtener_canciones():
-    return catalogo_canciones
+from src.dominio.cancion import Cancion
+
+class Biblioteca:
+    def __init__(self):
+        # Lista que contiene INSTANCIAS de la clase Cancion
+        self.canciones = [
+            Cancion(1, "Crimen", "Gustavo Cerati", "Fuerza natural", "2006"),
+            Cancion(2, "Adios", "Gustavo Cerati", "Fuerza natural", "2006"),
+            Cancion(3, "Here Comes the Sun", "The Beatles", "Abbey Road", "1969"),
+            Cancion(4, "Creep", "Radiohead", "Album de estudio", "1992"),
+            Cancion(5, "505", "Arctic Monkeys", "Favorite Worst Nightmare", "2007"),
+            Cancion(6, "Demoliendo Hoteles", "Charly García", "Piano Bar", "1984")
+        ]
+
+    def obtener_canciones(self):
+        return self.canciones
