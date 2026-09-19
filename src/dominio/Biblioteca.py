@@ -13,4 +13,5 @@ class Biblioteca:
         ]
 
     def obtener_canciones(self):
-        return self.canciones
+        return self.canciones 
+    #ACA ESTAN DEFINIDAS LAS CANCIONES POR DEFECTO#
