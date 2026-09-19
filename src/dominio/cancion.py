@@ -1,6 +1,6 @@
 class Cancion:
     def __init__(self, titulo, artista, album, anio, id_cancion):
-        self.id = id_cancion
+        self.id= int(id_cancion)
         self.titulo = titulo
         self.artista = artista
         self.album = album
