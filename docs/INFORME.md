@@ -34,7 +34,30 @@ Inmutable es todo lo contrario, no se pueden modificar sus datos una vez creado,
 
 - Caso recursivo:`for v in directas: resultado += versiones_de(versionable, v)`Ocurre cuando la canción sí tiene versiones directas. La función se vuelve a llamar a sí misma para cada una de esas versiones derivadas (`v`), bajando un nivel más en el árbol para encontrar versiones de las versiones, y acumula todos los hallazgos en la lista `resultado`
 
-- Traza de un ejemplo real del dataset:Tomando como entrada el dato de `versiones.txt`: `13,12,live` (la canción 13 es una versión en vivo de la 12) y asumiendo que la canción 13 tiene a su vez un remix con ID 14 (`14,13,remix`).
+-- **Traza de un ejemplo real del dataset:**
+  Tomando como entrada el dato de `versiones.txt`: `3,1,live` (la canción 3 es una versión en vivo de la 1) y asumiendo que la canción 3 tiene a su vez un remix con ID 2 (`2,1,remix`).
+
+  **Llamada inicial:** `versiones_de(versionable, 1)`
+  1. `versionable.versiones_directas(1)` devuelve `[3]`.
+  2. Como `directas` no está vacío, salta el caso base.
+  3. `resultado = [3]`.
+  4. Entra al bucle para `v = 3` y ejecuta la **Segunda Llamada**: `versiones_de(versionable, 3)`.
+     
+     **Segunda Llamada (id_cancion = 13):**
+     1. `versionable.versiones_directas(3)` devuelve `[4]`.
+     2. `resultado = [4]`.
+     3. Entra al bucle para `v = 4` y ejecuta la **Tercera Llamada**: `versiones_de(versionable, 4)`.
+        
+        **Tercera Llamada (id_cancion = 4):**
+        1. `versionable.versiones_directas(4)` devuelve `[]` (no tiene derivadas).
+        2. Se activa el **Caso Base**: retorna `[]`.
+     
+     4. De regreso en la Segunda Llamada, se suma el resultado: `[4] + [] = [4]`.
+     5. Finaliza la Segunda Llamada retornando `[4]`.
+
+  5. De regreso en la Llamada Inicial, se suma el resultado acumulado: `[3] + [4] = [3, 4]`.
+  6. Finaliza la función y devuelve el listado completo: `[3, 4]`.
+
 
 
 ## 4. TADs (E3)
