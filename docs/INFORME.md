@@ -28,10 +28,14 @@ Inmutable es todo lo contrario, no se pueden modificar sus datos una vez creado,
 
 ## 3. Recursión (E2)
 
-- Función:
-- Caso base:
-- Caso recursivo:
-- Traza de un ejemplo real del dataset:
+- Función: `versiones_de(versionable, id_cancion)`Esta función busca de manera recursiva todas las canciones derivadas ( remixes, versiones en vivo) de una canción dada, incluyendo las derivadas de sus derivadas (árbol de versiones).
+
+- Caso base:`if not directas:` Ocurre cuando una canción no tiene ninguna versión directa (covers, remixes o lives) registrada. En este punto, la recursión se detiene y devuelve una lista vacía `[]`.
+
+- Caso recursivo:`for v in directas: resultado += versiones_de(versionable, v)`Ocurre cuando la canción sí tiene versiones directas. La función se vuelve a llamar a sí misma para cada una de esas versiones derivadas (`v`), bajando un nivel más en el árbol para encontrar versiones de las versiones, y acumula todos los hallazgos en la lista `resultado`
+
+- Traza de un ejemplo real del dataset:Tomando como entrada el dato de `versiones.txt`: `13,12,live` (la canción 13 es una versión en vivo de la 12) y asumiendo que la canción 13 tiene a su vez un remix con ID 14 (`14,13,remix`).
+
 
 ## 4. TADs (E3)
 
