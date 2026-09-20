@@ -10,12 +10,12 @@ Mínimos: 8 casos escritos en E2; ejecutados en E3; 15 de regresión en E6 (pila
 | --- | --- | --- | --- | --- | --- | --- |
 | P01 | E1 | Arrancar el programa y listar catálogo | dataset de la cátedra | lista no vacía, sin traceback |  |  |
 | P02 | E1 | Elegir un ítem inexistente | id = -1 | mensaje claro, el menú sigue |  |  |
-| P03 | E2 | Operación recursiva sobre un ítem con cadena |  | imprime la cadena completa |  |  |
-| P04 | E2 | Operación recursiva sobre un ítem sin derivados |  | solo el ítem (caso base) |  |  |
-| P05 | E2 | Ver el detalle de un ítem que existe  |  |muestra todos sus datos |  |  |
-| P06 | E2 | Ver el detalle de un ítem que NO existe |  | mensaje claro, no se corta el programa|  |  |
-| P07 | E2 | Elegir una opción de menú inválida (ej. “Mono” |  | vuelve a mostrar el menú |  |  |
-| P08 | E2 | Pasar enter vacío en el menú |  | Vuelve a preguntar |  |  |
+| P03 | E2 | Operación recursiva sobre un ítem con cadena |Menu 5 - ID 1| imprime la cadena completa |no corrido (todavía)  |  |
+| P04 | E2 | Operación recursiva sobre un ítem sin derivados |Menu 5 - ID 3 | solo el ítem (caso base) |no corrido (todavía)  |  |
+| P05 | E2 | Ver el detalle de un ítem que existe  | |muestra todos sus datos |no corrido (todavía)  |  |
+| P06 | E2 | Ver el detalle de un ítem que NO existe |  | mensaje claro, no se corta el programa|no corrido (todavía)  |  |
+| P07 | E2 | Elegir una opción de menú inválida (ej. “Mono”) | Mono | vuelve a mostrar el menú |no corrido (todavía)  |  |
+| P08 | E2 | Pasar enter vacío en el menú | ENTER | Vuelve a preguntar |no corrido (todavía)  |  |
 | P09 | E3 | Agregar a la colección principal hasta el tope | equipo de 6 / equivalente | el séptimo falla con excepción propia |  |  |
 | P10 | E3 | Desapilar historial vacío | pila vacía | excepción propia, menú sigue |  |  |
 | P11 | E3 | Desencolar cola vacía | cola vacía | excepción propia, menú sigue |  |  |
