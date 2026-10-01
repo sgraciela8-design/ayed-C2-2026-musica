@@ -3,7 +3,6 @@ class Pila:
 from src.tads.lista_enlazada import ListaEnlazada
 def __init__(self):
     self._datos = ListaEnlazada()
-    
 
     def apilar(self, dato):
         self._datos.insertar_al_inicio(dato)
@@ -12,7 +11,7 @@ def __init__(self):
         if self.esta_vacia():#evita errores si no hay elementos
             return None
         dato = self._datos._cabeza.dato #guarda el dato
-        self._datos._cabeza = self._datos._cabeza.siguiente #mueve la cabeza 
+        self._datos._cabeza = self._datos._cabeza.siguiente #mueve la cabeza al siguiente nodo
         return dato
 
     def ver_tope(self): #el último elemento agregado siempre queda primero
