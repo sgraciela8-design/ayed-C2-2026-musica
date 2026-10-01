@@ -2,6 +2,9 @@ class ListaEnlazada:
     """TAD lista enlazada simple. No usar list de Python por debajo."""
     from src.tads.nodo import Nodo
 
+    def insertar_al_final(self, cancion):
+        ...
+
 def __init__(self): 
        self._cabeza = None
        self._tamanio = 0 
