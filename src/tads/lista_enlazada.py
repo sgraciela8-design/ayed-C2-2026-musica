@@ -3,12 +3,12 @@ class ListaEnlazada:
     from src.tads.nodo import Nodo
 
 def __init__(self): 
-       self.primero = None
+       self._cabeza = None
        self._tamanio = 0 
 raise NotImplementedError
 
 def esta_vacia(self):
-    return self.primero is None
+    return self._cabeza is None
     raise NotImplementedError
 
     def tamanio(self): 
@@ -16,19 +16,19 @@ def esta_vacia(self):
         raise NotImplementedError
 
     def insertar_al_inicio(self, dato):
-        nuevo = Nodo(dato,self.primero)
-        self.primero = nuevo
+        nuevo = Nodo(dato,self._cabeza)
+        self._cabeza = nuevo
         self._tamanio += 1
         raise NotImplementedError
 
     def insertar_al_final(self, dato):
         nuevo = Nodo(dato)
         if self.esta_vacia():
-            sel.primero = nuevo
+            self._cabeza = nuevo
         else:
-            actual = self.primero
+            actual = self._cabeza
 
-            while actual.siguiente:
+            while actual.siguiente is not None:
                 actual = actual.siguiente
             actual.siguiente = nuevo
 
@@ -39,10 +39,34 @@ def esta_vacia(self):
         raise NotImplementedError
 
     def eliminar(self, dato):
+        if self.esta_vacia(): #caso 1 lista vacia 
+            return False
+        if self._cabeza.dato == dato: #caso 2 eliminar cabeza
+            self._cabeza = self._cabeza.siguiente
+            self._tamanio -= 1
+            return True
+        actual = self._cabeza
+        while actual.siguiente is not None:
+            if actual.siguiente.dato == dato:
+                actual.siguiente = actual.siguiente.siguiente
+                self._tamanio -= 1
+                return True
+            actual = actual.siguiente
+        return False
         raise NotImplementedError
 
     def buscar(self, dato):
+        actual = self._cabeza
+        while actual is not None:
+            if actual.dato == dato:
+                return actual
+            actual = actual.siguiente
+        return None
         raise NotImplementedError
 
     def __iter__(self):
+        actual = self._cabeza
+        while actual is not None:
+            yield actual.dato
+            actual = actual.siguiente
         raise NotImplementedError
