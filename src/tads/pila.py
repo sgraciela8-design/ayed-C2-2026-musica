@@ -1,8 +1,9 @@
 class Pila:
     """TAD pila implementado sobre ListaEnlazada."""
-
-    def __init__(self):
-        raise NotImplementedError
+from src.tads.lista_enlazada import ListaEnlazada
+def __init__(self):
+    self._lista = ListaEnlazada()
+    
 
     def apilar(self, dato):
         raise NotImplementedError
