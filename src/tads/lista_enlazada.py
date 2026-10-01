@@ -1,17 +1,16 @@
+from src.tads.nodo import Nodo
+
 class ListaEnlazada:
     """TAD lista enlazada simple. No usar list de Python por debajo."""
-    from src.tads.nodo import Nodo
+    
 
-    def insertar_al_final(self, cancion):
-        ...
-
-def __init__(self): 
+    def __init__(self): 
        self._cabeza = None
        self._tamanio = 0 
 
 
-def esta_vacia(self):
-    return self._cabeza is None
+    def esta_vacia(self):
+        return self._cabeza is None
    
 
     def tamanio(self): 
