@@ -17,12 +17,12 @@ def esta_vacia(self):
 
     def insertar_al_inicio(self, dato):
         nuevo = Nodo(dato,self.primero)
-        self.primero =nuevo
+        self.primero = nuevo
         self._tamanio += 1
         raise NotImplementedError
 
     def insertar_al_final(self, dato):
-        nuevo = nodo(dato)
+        nuevo = Nodo(dato)
         if self.esta_vacia():
             sel.primero = nuevo
         else:
