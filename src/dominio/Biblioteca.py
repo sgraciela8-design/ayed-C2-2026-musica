@@ -43,7 +43,7 @@ class Biblioteca:
         }
 
     def obtener_canciones(self):
-        return self.cancion 
+        return self.cancion
 
     def obtener_todas_las_versiones_recursivo(self, id_cancion):
         """Método RECURSIVO para la Entrega 2."""
