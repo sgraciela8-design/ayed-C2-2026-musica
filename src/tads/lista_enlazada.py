@@ -36,6 +36,17 @@ def esta_vacia(self):
         raise NotImplementedError
 
     def insertar_ordenado(self, dato, clave):
+        if self.esta_vacia() or clave(dato) < clave(self._cabeza.dato):
+            self.insertar_al_inicio(dato)
+            return
+        else:
+            nuevo = Nodo(dato)
+            actual = self._cabeza
+            while actual.siguiente is not None and clave(actual.siguiente.dato) < clave(dato):
+                actual = actual.siguiente
+            nuevo.siguiente = actual.siguiente
+            actual.siguiente = nuevo
+            self._tamanio += 1
         raise NotImplementedError
 
     def eliminar(self, dato):
