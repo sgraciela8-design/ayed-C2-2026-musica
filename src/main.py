@@ -20,6 +20,7 @@ def listar_catalogo():
     print("--- CATALOGO DE CANCIONES ---")
     # Usamos atributos de objeto (POO)
     for item in canciones:
+        #print(type(item))
         print(f"{item.id:>2} {item.titulo} - {item.artista} ({item.album}, {item.anio})")
     print("Esto es todo por ahora")
 

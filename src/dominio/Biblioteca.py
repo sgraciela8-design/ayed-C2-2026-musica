@@ -1,4 +1,5 @@
-from src.dominio import cancion
+from typing import Self
+
 from src.dominio.cancion import Cancion
 from src.tads.lista_enlazada import ListaEnlazada
 from src. excepciones import ColeccionLlenaError 
@@ -6,7 +7,7 @@ from src. excepciones import ColeccionLlenaError
 class Biblioteca:
     def __init__(self):
          self.capacidad_maxima = 6
-         self.cancion = ListaEnlazada()
+         self.canciones = ListaEnlazada()
          self.agregar_cancion (
             Cancion (1, "Crimen", "Gustavo Cerati", "Fuerza natural", "2006")
          )
@@ -25,30 +26,31 @@ class Biblioteca:
          self.agregar_cancion (
             Cancion(6, "Demoliendo Hoteles", "Charly García", "Piano Bar", "1984")
          )
+  
 
         # 1. Lista con instancias de Cancion
-         def agregar_cancion(self, cancion):
-            if self.cancion.tamanio() >= self.capacidad_maxima:
-                          raise ColeccionLlenaError(
-                              "La playlist alcanzó su capacidad máxima."
+    def agregar_canciones(self, cancion):
+            if self.canciones.tamanio() >= self.capacidad_maxima:
+                raise ColeccionLlenaError(
+                "La playlist alcanzó su capacidad máxima."
             )
             
-         self.cancion.insertar_al_final(cancion)      
+    Self.canciones.insertar_al_final(cancion)       # type: ignore
             
         
          # 2. Relaciones de versiones directas (id_original -> lista de id_derivadas)
-         self.versiones_directas = {
+    Self.versiones_directas = { # pyright: ignore[reportAttributeAccessIssue]
             1: [2],
             2: [3]
         }
 
     def obtener_canciones(self):
-        return self.cancion
+        return self.canciones
 
     def obtener_todas_las_versiones_recursivo(self, id_cancion):
         """Método RECURSIVO para la Entrega 2."""
         id_cancion = int(id_cancion)
-        ids_derivados = self.versiones_directas.get(id_cancion, [])
+        ids_derivados = self.versiones_directas.get(id_cancion, []) # type: ignore
 
         # CASO BASE: Si no hay derivaciones para este ID
         if not ids_derivados:
@@ -58,7 +60,7 @@ class Biblioteca:
         resultado = []
         for id_derivado in ids_derivados:
             # Buscamos la canción directamente en el loop
-            for cancion in self.cancion:
+            for cancion in self.canciones:
                 if int(cancion.id) == int(id_derivado):
                     resultado.append(cancion)
                     break
@@ -70,3 +72,4 @@ class Biblioteca:
 
     def agregar_cancion(self, arg1):
         ...
+    versiones_directas = None
