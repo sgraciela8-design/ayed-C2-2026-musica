@@ -1,6 +1,7 @@
+from src.tads.lista_enlazada import ListaEnlazada
+
 class Cola:
     """TAD cola implementado sobre ListaEnlazada."""
-from src.tads.lista_enlazada import ListaEnlazada
 def __init__(self):
     self._datos = ListaEnlazada()
 
