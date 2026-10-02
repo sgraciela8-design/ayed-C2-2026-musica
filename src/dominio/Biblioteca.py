@@ -1,5 +1,3 @@
-from typing import Self
-
 from src.dominio.cancion import Cancion
 from src.tads.lista_enlazada import ListaEnlazada
 from src. excepciones import ColeccionLlenaError 
