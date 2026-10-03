@@ -2,7 +2,18 @@ from src.config import TEMA
 from src.dominio.Biblioteca import Biblioteca
 from src.tads.pila import Pila
 from src.tads.cola import Cola
+from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
 
+class Pila:
+    def desapilar(self):
+        if self.esta_vacia():
+            raise PilaVaciaError("No hay elementos para deshacer.")
+        try:
+            item = coleccion.desapilar()
+        except ColaVaciaError as e:
+            print(f"No se puede desenchufar: {e} ")
+        except ColeccionLlenaError as e:
+            print(f"La colección está vacía: {e}")
 
 
 TEMAS = {
