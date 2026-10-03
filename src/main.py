@@ -1,5 +1,9 @@
 from src.config import TEMA
 from src.dominio.Biblioteca import Biblioteca
+from src.tads.pila import Pila
+from src.tads.cola import Cola
+
+
 
 TEMAS = {
     "pokedex": "Pokédex",

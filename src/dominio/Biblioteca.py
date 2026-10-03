@@ -1,7 +1,7 @@
 from src.dominio.cancion import Cancion
 from src.tads.lista_enlazada import ListaEnlazada
 from src. excepciones import ColeccionLlenaError 
-
+##
 class Biblioteca:
     def __init__(self):
          self.capacidad_maxima = 6
@@ -29,7 +29,7 @@ class Biblioteca:
         # 1. Lista con instancias de Cancion
     def agregar_cancion(self, cancion):
             if self.canciones.tamanio() >= self.capacidad_maxima:
-                raise ColeccionLlenaError(
+                    raise ColeccionLlenaError(
                 "La playlist alcanzó su capacidad máxima."
             )
             self.canciones.insertar_al_final(cancion)       

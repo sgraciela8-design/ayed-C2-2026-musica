@@ -53,8 +53,14 @@ class ListaEnlazada:
         
 
     def eliminar(self, dato):
-        if self.esta_vacia(): #caso 1 lista vacia 
-            return False
+        if self.esta_vacia():
+            return None
+        dato= self._cabeza.dato 
+        self._cabeza = self._cabeza.siguiente
+        self._tamanio -= 1
+        return False
+        #caso 1 lista vacia 
+            
         
         if self._cabeza is not None and self._cabeza.dato == dato: #caso 2 eliminar cabeza
             self._cabeza = self._cabeza.siguiente
