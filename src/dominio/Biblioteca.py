@@ -32,12 +32,11 @@ class Biblioteca:
                 raise ColeccionLlenaError(
                 "La playlist alcanzó su capacidad máxima."
             )
-            
-    Self.canciones.insertar_al_final(cancion)       # type: ignore
+            self.canciones.insertar_al_final(cancion)       
             
         
          # 2. Relaciones de versiones directas (id_original -> lista de id_derivadas)
-    Self.versiones_directas = { # pyright: ignore[reportAttributeAccessIssue]
+            self.versiones_directas = { # pyright: ignore[reportAttributeAccessIssue]
             1: [2],
             2: [3]
         }
