@@ -8,7 +8,7 @@ Fecha de esta versión del archivo:
 | --- | --- | --- | --- | --- | --- | --- |
 | E1 |  10/09/2026|browser modo IA |terminología, errores de código, docs git y github | 0 | 0 | Graciela / Franco |
 | E2 |20/09/2026  | browser modo IA | Definiciones, explicación de funciones y métodos en la recursividad | verificar errores de codigo|0  |Graciela  |
-| E3 |  |  |  |  |  |  |
+| E3 | 03/10/2026 | copilot and google modo IA |Corregir lineas de código y errores de sintaxis, comparar correcciones  |Graciela  |  |  |
 | E4 |  |  |  |  |  |  |
 | E5 |  |  |  |  |  |  |
 | E6 |  |  |  |  |  |  |
