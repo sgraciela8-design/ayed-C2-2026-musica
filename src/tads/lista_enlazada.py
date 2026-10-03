@@ -30,22 +30,23 @@ class ListaEnlazada:
         else:
             actual = self._cabeza
 
-            while actual.siguiente is not None:
+            while actual is not None and actual.siguiente is not None:
                 actual = actual.siguiente
-            actual.siguiente = nuevo
-
+            if actual is not None:
+                actual.siguiente = nuevo
         self._tamanio += 1
         
 
-    def insertar_ordenado(self, dato, clave):
-        if self.esta_vacia() or clave(dato) < clave(self._cabeza.dato):
+    def insertar_ordenado(self, dato, clave): #si esta vacia o se incerta al inicio
+        if self.esta_vacia() or (self._cabeza is not None and clave(dato) < clave(self._cabeza.dato)):
             self.insertar_al_inicio(dato)
             return
-        else:
-            nuevo = Nodo(dato)
-            actual = self._cabeza
-            while actual.siguiente is not None and clave(actual.siguiente.dato) < clave(dato):
-                actual = actual.siguiente
+        
+        nuevo = Nodo(dato)
+        actual = self._cabeza
+        while actual is not None and actual.siguiente is not None and clave(actual.siguiente.dato) < clave(dato):
+             actual = actual.siguiente
+        if actual is not None:
             nuevo.siguiente = actual.siguiente
             actual.siguiente = nuevo
             self._tamanio += 1
@@ -54,12 +55,14 @@ class ListaEnlazada:
     def eliminar(self, dato):
         if self.esta_vacia(): #caso 1 lista vacia 
             return False
-        if self._cabeza.dato == dato: #caso 2 eliminar cabeza
+        
+        if self._cabeza is not None and self._cabeza.dato == dato: #caso 2 eliminar cabeza
             self._cabeza = self._cabeza.siguiente
             self._tamanio -= 1
             return True
+        
         actual = self._cabeza
-        while actual.siguiente is not None:
+        while actual is not None and actual.siguiente is not None:
             if actual.siguiente.dato == dato:
                 actual.siguiente = actual.siguiente.siguiente
                 self._tamanio -= 1
