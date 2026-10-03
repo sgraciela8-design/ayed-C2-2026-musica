@@ -27,7 +27,7 @@ class Biblioteca:
   
 
         # 1. Lista con instancias de Cancion
-    def agregar_canciones(self, cancion):
+    def agregar_cancion(self, cancion):
             if self.canciones.tamanio() >= self.capacidad_maxima:
                 raise ColeccionLlenaError(
                 "La playlist alcanzó su capacidad máxima."
@@ -37,7 +37,7 @@ class Biblioteca:
         
          # 2. Relaciones de versiones directas (id_original -> lista de id_derivadas)
             self.versiones_directas = { # pyright: ignore[reportAttributeAccessIssue]
-            1: [2],
+            1: [2, 3],
             2: [3]
         }
 
@@ -67,6 +67,6 @@ class Biblioteca:
 
         return resultado
 
-    def agregar_cancion(self, arg1):
+    
         ...
-    versiones_directas = None
+    #versiones_directas = None
