@@ -71,6 +71,21 @@ def operacion_recursiva():
             print("\nEsta canción no tiene versiones o derivados (Caso Base cumplido).")
     except ValueError:
         print("Error: Debes ingresar un número de ID válido.")
+def operacion_recursiva():
+    """Función para probar el Ítem 2: Recursión del dominio."""
+    print("\n--- BUSCAR VERSIONES/DERIVADOS (RECURSIVO) ---")
+    try:
+        id_cancion = int(input("Ingresá el ID de la canción inicial: "))
+        versiones = biblioteca.obtener_todas_las_versiones_recursivo(id_cancion)
+        if versiones:
+            print(f"\nVersiones encontradas ({len(versiones)}):")
+            for v in versiones:
+                print(f" -> [{v.id}] {v.titulo} - {v.artista}")
+        else:
+            print("\nEsta canción no tiene versiones o derivados (Caso Base cumplido).")
+    except ValueError:
+        print("Error: Debes ingresar un número de ID válido.")
+
 
 
 def mostrar_menu():
