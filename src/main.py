@@ -34,6 +34,8 @@ def atender_cola():
     except ColaVaciaError:
         print("No hay elementos en la cola.")
 
+def pendiente():
+    print("Todavía no está implementado. Completae en la entrega que corresponde.")
 def agregar_a_coleccion_principal():
     """Opción 6: Colección principal (playlist / equipo de 6)."""
     # Ejemplo solicitando id o elemento a agregar
@@ -101,12 +103,14 @@ def main():
         elif opcion == "1":
             listar_catalogo()
         elif opcion == "5":
-            operacion_recursiva()  # Ahora ejecuta la función recursiva
-        elif opcion in {"2", "3", "4", "6", "7", "8", "9"}:
+            operacion_recursiva()
+        elif opcion == "6":
+            agregar_a_coleccion_principal()
+        elif opcion == "7":
+            ejecutar_historial()
+        elif opcion == "8":
+            atender_cola()
+        elif opcion in {"2", "3", "4", "9"}:
             pendiente()
         else:
             print("Opción inválida.")
-
-
-if __name__ == "__main__":
-    main()
