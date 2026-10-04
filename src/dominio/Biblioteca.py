@@ -12,8 +12,8 @@ class Biblioteca:
           self.versiones_directas = {
              1: [],
              2: [3]
-        }
-      self.cargar_canciones_iniciales()
+          }
+          self.cargar_canciones_iniciales()
      
       #1. Lista con instancias de Cancion
       def agregar_canciones(self, cancion):
