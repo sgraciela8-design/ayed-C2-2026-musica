@@ -15,7 +15,16 @@ TEMAS = {
 
 # Instanciamos la clase Biblioteca
 biblioteca = Biblioteca()
+historial = Pila()
+cola_turnos = Cola()
 
+def ejecutar_historial():
+    """Opción 7: Historial (pila) para deshacer."""
+    try:
+        accion = historial.desapilar()
+        print(f"Acción deshecha: {accion}")
+    except PilaVaciaError:
+        print("No hay acciones en el historial para deshacer.")
 
 def pendiente():
     print("Todavía no está implementado. Completar en la entrega que corresponde.")
