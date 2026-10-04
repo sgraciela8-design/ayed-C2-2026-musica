@@ -1,27 +1,3 @@
-<<<<<<< Updated upstream
-from src.tads.lista_enlazada import ListaEnlazada
-from src.excepciones import PilaVaciaError
-class Pila:
-    """TAD pila implementado sobre ListaEnlazada."""
-
-def __init__(self):
-    self._datos = ListaEnlazada()
-
-def apilar(self, dato):
-    self._datos.insertar_al_inicio(dato)
-        
-def desapilar(self): 
-    if self.esta_vacia():
-        raise  PilaVaciaError("No hay elementos para desapilar.") 
-    dato = self._datos._cabeza.dato #guarda el dato
-    self._datos._cabeza = self._datos._cabeza.siguiente #mueve la cabeza al siguiente nodo
-    return dato
-
-def ver_tope(self): #el último elemento agregado siempre queda primero
-    if self.esta_vacia():
-        raise PilaVaciaError("La Pila está vacía.")
-    return self._datos._cabeza.dato
-=======
 from src.excepciones import PilaVaciaError
 from src.tads.lista_enlazada import ListaEnlazada 
 
@@ -45,7 +21,6 @@ def __init__(self):
         if self.esta_vacia():
             raise PilaVaciaError ("La pila está vacia")
         return self._datos._cabeza.dato
->>>>>>> Stashed changes
     
 def esta_vacia(self):
     return self._datos.esta_vacia()

@@ -1,15 +1,8 @@
-<<<<<<< Updated upstream
-=======
 from src.excepciones import ColaVaciaError
->>>>>>> Stashed changes
 from src.tads.lista_enlazada import ListaEnlazada
 
 class Cola:
     """TAD cola implementado sobre ListaEnlazada."""
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 def __init__(self):
     self._datos = ListaEnlazada()
 

@@ -1,19 +1,12 @@
 from src.dominio.cancion import Cancion
 from src.tads.lista_enlazada import ListaEnlazada
-<<<<<<< Updated upstream
 from src. excepciones import ColeccionLlenaError 
-##
-=======
 from src.excepciones import ColeccionLlenaError
 
-
->>>>>>> Stashed changes
 class Biblioteca:
     def __init__(self):
         self.capacidad_maxima = 6
         self.canciones = ListaEnlazada()
-
-<<<<<<< Updated upstream
         # 1. Lista con instancias de Cancion
     def agregar_cancion(self, cancion):
             if self.canciones.tamanio() >= self.capacidad_maxima:
@@ -25,7 +18,7 @@ class Biblioteca:
         
          # 2. Relaciones de versiones directas (id_original -> lista de id_derivadas)
             self.versiones_directas = { # pyright: ignore[reportAttributeAccessIssue]
-=======
+
         self.agregar_cancion(Cancion(1, "Crimen", "Gustavo Cerati", "Fuerza natural", "2006"))
         self.agregar_cancion(Cancion(2, "Adios", "Gustavo Cerati", "Fuerza natural", "2006"))
         self.agregar_cancion(Cancion(3, "Here Comes the Sun", "The Beatles", "Abbey Road", "1969"))
@@ -34,14 +27,13 @@ class Biblioteca:
         self.agregar_cancion(Cancion(6, "Demoliendo Hoteles", "Charly García", "Piano Bar", "1984"))
 
         #Lista con instancias de Canción
-    def agregar_cancion(self, cancion):
+     def agregar_cancion(self, cancion):
         if self.canciones.tamanio() >= self.capacidad_maxima:
             raise ColeccionLlenaError("La playlist alcanzó su capacidad máxima.")
         self.canciones.insertar_al_final(cancion)
 
         #Relaciones de versiones directas (id_original  -> lista de id_derivadas)
-        self.versiones_directas = {
->>>>>>> Stashed changes
+        self.versiones_directas =Stashed changes
             1: [2, 3],
             2: [3]
         }
@@ -67,13 +59,9 @@ class Biblioteca:
                     break
 
             resultado += self.obtener_todas_las_versiones_recursivo(id_derivado)
-
-<<<<<<< Updated upstream
-        return resultado
+                return resultado
 
     
         ...
     #versiones_directas = None
-=======
-        return resultado
->>>>>>> Stashed changes
+

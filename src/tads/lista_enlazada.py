@@ -33,14 +33,6 @@ class ListaEnlazada:
             while actual is not None and actual.siguiente is not None:
                 actual = actual.siguiente
             if actual is not None:
-<<<<<<< Updated upstream
-                actual.siguiente = nuevo
-        self._tamanio += 1
-        
-
-    def insertar_ordenado(self, dato, clave): #si esta vacia o se incerta al inicio
-        if self.esta_vacia() or (self._cabeza is not None and clave(dato) < clave(self._cabeza.dato)):
-=======
                actual.siguiente = nuevo
 
         self._tamanio += 1
@@ -48,7 +40,6 @@ class ListaEnlazada:
 
     def insertar_ordenado(self, dato, clave): # si está vacía o se incerta al inicio
         if self.esta_vacia() or (self._is not None and clave(actual.siguiente.dato) < clave(dato):
->>>>>>> Stashed changes
             self.insertar_al_inicio(dato)
             return
         
@@ -63,16 +54,6 @@ class ListaEnlazada:
         
 
     def eliminar(self, dato):
-<<<<<<< Updated upstream
-        if self.esta_vacia():
-            return False
-        if self._cabeza.dato ==dato:
-            self._cabeza = self._cabeza.siguiente
-            self._tamanio -= 1
-            return True
-        actual= self._cabeza
-        while actual.siguiente is not None:
-=======
         if self.esta_vacia(): #caso 1 lista vacia 
             return None
         dato = self._cabeza.dato       
@@ -87,7 +68,6 @@ class ListaEnlazada:
 
         actual = self._cabeza
         while actual is not None and actual.siguiente is not None:
->>>>>>> Stashed changes
             if actual.siguiente.dato == dato:
                 actual.siguiente = actual.siguiente.siguiente
                 self._tamanio -= 1 
@@ -148,15 +128,6 @@ class IteradorLista:
 
 
     def __iter__(self):
-<<<<<<< Updated upstream
-        return self
-    def __next__(self):
-        if self.actual is None:
-            raise StopIteration
-        dato = self._actual.dato
-        self._actual = self._actual.siguiente
-        return dato
-=======
         actual = self._cabeza
         while actual is not None:
             yield actual.dato
@@ -176,5 +147,4 @@ class IteradorLista:
              self.actual = self.actual.siguiente
              return dato
 
->>>>>>> Stashed changes
   
