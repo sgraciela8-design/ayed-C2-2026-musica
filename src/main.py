@@ -118,7 +118,8 @@ def main():
         elif opcion == "1":
             listar_catalogo()
         elif opcion == "2":
-             ver_detalle() 
+             #ver_detalle() 
+            pendiente()
         elif opcion == "5":
             operacion_recursiva() # Ahora ejecuta la función recursiva       
         elif opcion == "6":
