@@ -1,33 +1,19 @@
 from src.config import TEMA
 from src.dominio.Biblioteca import Biblioteca
-<<<<<<< Updated upstream
-from src.tads.pila import Pila
 from src.tads.cola import Cola
+from src.tads.pila import Pila
 from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
 
-
-
-
-=======
-from src.tads.cola import Cola
-from src.tads.pila import Pila
-#from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
->>>>>>> Stashed changes
 TEMAS = {
     "pokedex": "Pokédex",
     "recetario": "Recetario",
     "musica": "Biblioteca musical",
 }
-biblioteca = Biblioteca()
-<<<<<<< Updated upstream
-historial = Pila()
-cola_turnos = Cola()
-=======
-#Instanciamos la clase Biblioteca
 
+biblioteca = Biblioteca()#Instanciamos la clase Biblioteca
 historial = Pila()
 cola_reproduccion = Cola()
->>>>>>> Stashed changes
+
 
 def ejecutar_historial():
     """Opción 7: Historial (pila) para deshacer."""
@@ -40,13 +26,15 @@ def ejecutar_historial():
 def atender_cola():
     """Opción 8: Cola para atención/turnos."""
     try:
-        elemento = cola_turnos.desencolar()
+        elemento = cola_reproduccion.desencolar()
         print(f"Atendiendo/reproduciendo: {elemento}")
     except ColaVaciaError:
         print("No hay elementos en la cola.")
 
 def pendiente():
     print("Todavía no está implementado. Completae en la entrega que corresponde.")
+
+
 def agregar_a_coleccion_principal():
     """Opción 6: Colección principal (playlist / equipo de 6)."""
     # Ejemplo solicitando id o elemento a agregar
@@ -57,6 +45,7 @@ def agregar_a_coleccion_principal():
         print("Elemento agregado exitosamente.")
     except ColeccionLlenaError:
         print("El equipo está lleno (máximo 6). No se puede agregar más.")
+
 
 def listar_catalogo():
     canciones = biblioteca.obtener_canciones()
@@ -113,7 +102,7 @@ def mostrar_cola():
        return
 
     print("Próxima canción:")
-    print(cola_reproduccion.ver.frente())
+    print(cola_reproduccion.frente())
 
 
 def main():
@@ -130,23 +119,15 @@ def main():
         elif opcion == "1":
             listar_catalogo()
         elif opcion == "5":
-<<<<<<< Updated upstream
-            operacion_recursiva()
-        elif opcion == "6":
-            agregar_a_coleccion_principal()
-        elif opcion == "7":
-            ejecutar_historial()
-        elif opcion == "8":
-            atender_cola()
-        elif opcion in {"2", "3", "4", "9"}:
-=======
             operacion_recursiva() # Ahora ejecuta la función recursiva       
         elif opcion == "7":
             mostrar_historial()
         elif opcion == "8":
             mostrar_cola()
         elif opcion in {"2", "3", "4", "6", "9"}:
->>>>>>> Stashed changes
             pendiente()
         else:
             print("Opción inválida.")
+
+if __name__ == "__main__":
+    main()
