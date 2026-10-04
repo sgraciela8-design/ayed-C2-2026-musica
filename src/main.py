@@ -127,7 +127,7 @@ def main():
             mostrar_historial()
         elif opcion == "8":
             mostrar_cola()
-        elif opcion in { "3","4","9"}:
+        elif opcion in {"2","3","4","9"}:
             print("Todavía no está implementado. Completae en la entrega que corresponde.")
         else:
             print("Opción inválida.")
