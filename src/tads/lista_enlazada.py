@@ -30,7 +30,7 @@ class ListaEnlazada:
         else:
             actual = self._cabeza
 
-            while actual is not None and actual.siguiente is not None:
+            while actual.siguiente is not None:
                 actual = actual.siguiente
                 actual.siguiente = nuevo
 
@@ -46,12 +46,13 @@ class ListaEnlazada:
         
 
     def insertar_ordenado(self, dato, clave): # si está vacía o se incerta al inicio
-        if self.esta_vacia() or clave(self._cabeza is not None and clave(self._cabeza.dato) >= clave(dato)):
+        if self.esta_vacia() or clave(self._cabeza.dato) >= clave(dato):
             self.insertar_al_inicio(dato)
             return
         
         nuevo = Nodo(dato)
         actual = self._cabeza
+        
         while actual is not None and clave(actual.siguiente.dato) < clave(dato):
              actual = actual.siguiente
 
