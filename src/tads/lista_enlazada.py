@@ -69,35 +69,63 @@ class ListaEnlazada:
 
         return False
     
-        #caso 1 lista vacia 
-            
-        
-        if self._cabeza is not None and self._cabeza.dato == dato: #caso 2 eliminar cabeza
-            self._cabeza = self._cabeza.siguiente
-            self._tamanio -= 1
-            return True
-        
-        actual = self._cabeza
-        while actual is not None and actual.siguiente is not None:
-            if actual.siguiente.dato == dato:
-                actual.siguiente = actual.siguiente.siguiente
-                self._tamanio -= 1
-                return True
-            actual = actual.siguiente
-        return False #caso 3 no se encontro el dato
+    def eliminar_primero(self):
+        """Quita y retorna el primer elemento (para desapilar o desencolar)."""
+        if self.esta_vacia():
+            return None
+        dato = self._cabeza.dato
+        self._cabeza = self._cabeza.siguiente
+        self._tamanio -= 1
+        return dato
+
+    def obtener_primero(self):
+        """Retorna el primer elemento sin quitarlo (para ver_tope)."""
+        if self.esta_vacia():
+            return None
+        return self._cabeza.dato
 
     def buscar(self, dato):
         actual = self._cabeza
         while actual is not None:
             if actual.dato == dato:
-                return actual
+                return actual.dato
+            actual = actual.siguiente
+        return None
+
+    def __iter__(self):
+        return IteradorLista(self._cabeza)
+
+
+class IteradorLista:
+    """Iterador que implementa __iter__ y __next__ cumpliendo la rúbrica 3.2."""
+    def __init__(self, cabeza):
+        self._actual = cabeza
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self._actual is None:
+            raise StopIteration
+        dato = self._actual.dato
+        self._actual = self._actual.siguiente
+        return dato
+
+    def buscar(self, dato):
+        actual = self._cabeza
+        while actual is not None:
+            if actual.dato == dato:
+                return actual.dato
             actual = actual.siguiente
         return None
 
 
     def __iter__(self):
-        actual = self._cabeza
-        while actual is not None:
-            yield actual.dato
-            actual = actual.siguiente
+        return self
+    def __next__(self):
+        if self.actual is None:
+            raise StopIteration
+        dato = self._actual.dato
+        self._actual = self._actual.siguiente
+        return dato
   
