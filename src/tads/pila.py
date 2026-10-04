@@ -9,8 +9,8 @@ def __init__(self):
 def apilar(self, dato):
     self._datos.insertar_al_inicio(dato)
         
-def desapilar(self): #quita el nodo de la cabeza y devuelve su dato
-    if self.esta_vacia():#evita errores si no hay elementos
+def desapilar(self): 
+    if self.esta_vacia():
         raise  PilaVaciaError("No hay elementos para desapilar.") 
     dato = self._datos._cabeza.dato #guarda el dato
     self._datos._cabeza = self._datos._cabeza.siguiente #mueve la cabeza al siguiente nodo
