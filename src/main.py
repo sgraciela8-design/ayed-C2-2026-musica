@@ -1,5 +1,6 @@
 from src.config import TEMA
 from src.dominio.Biblioteca import Biblioteca
+<<<<<<< Updated upstream
 from src.tads.pila import Pila
 from src.tads.cola import Cola
 from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
@@ -7,16 +8,26 @@ from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
 
 
 
+=======
+from src.tads.cola import Cola
+from src.tads.pila import Pila
+#from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
+>>>>>>> Stashed changes
 TEMAS = {
     "pokedex": "Pokédex",
     "recetario": "Recetario",
     "musica": "Biblioteca musical",
 }
-
-# Instanciamos la clase Biblioteca
 biblioteca = Biblioteca()
+<<<<<<< Updated upstream
 historial = Pila()
 cola_turnos = Cola()
+=======
+#Instanciamos la clase Biblioteca
+
+historial = Pila()
+cola_reproduccion = Cola()
+>>>>>>> Stashed changes
 
 def ejecutar_historial():
     """Opción 7: Historial (pila) para deshacer."""
@@ -88,6 +99,22 @@ def mostrar_menu():
     print("9. Guardar / cargar archivos")
     print("0. Salir")
 
+def mostrar_historial():
+    if historial.esta_vacia():
+        print("No hay canciones en el historial. ")
+        return
+
+    print("Última canción escuchada: ")
+    print(historial.ver_tope())
+
+def mostrar_cola():
+    if cola_reproduccion.esta_vacia():
+       print("La cola está vacía.")
+       return
+
+    print("Próxima canción:")
+    print(cola_reproduccion.ver.frente())
+
 
 def main():
     if TEMA not in TEMAS:
@@ -103,6 +130,7 @@ def main():
         elif opcion == "1":
             listar_catalogo()
         elif opcion == "5":
+<<<<<<< Updated upstream
             operacion_recursiva()
         elif opcion == "6":
             agregar_a_coleccion_principal()
@@ -111,6 +139,14 @@ def main():
         elif opcion == "8":
             atender_cola()
         elif opcion in {"2", "3", "4", "9"}:
+=======
+            operacion_recursiva() # Ahora ejecuta la función recursiva       
+        elif opcion == "7":
+            mostrar_historial()
+        elif opcion == "8":
+            mostrar_cola()
+        elif opcion in {"2", "3", "4", "6", "9"}:
+>>>>>>> Stashed changes
             pendiente()
         else:
             print("Opción inválida.")

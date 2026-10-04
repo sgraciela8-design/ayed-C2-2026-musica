@@ -1,24 +1,32 @@
+<<<<<<< Updated upstream
+=======
+from src.excepciones import ColaVaciaError
+>>>>>>> Stashed changes
 from src.tads.lista_enlazada import ListaEnlazada
 
 class Cola:
     """TAD cola implementado sobre ListaEnlazada."""
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 def __init__(self):
     self._datos = ListaEnlazada()
 
-    def encolar(self, dato):
+    def encolar(self, dato): #agrega al final de la cola
         self._datos.insertar_al_final(dato)
 
-    def desencolar(self):
+    def desencolar(self): #si la cola está vacia, da ColaVaciaError
         if self.esta_vacia():
-            return None
+            raise ColaVaciaError ("No hay elementos en la cola")
         dato = self.datos._cabeza.dato
         self._datos._cabeza = self._datos._cabeza.siguiente
-        self._daatis._tamanio -=1
+        self._datos._tamanio -=1
         return dato
 
-    def ver_frente(self):
+    def ver_frente(self): #mira al del frente sin sacarlo
         if self.esta_vacia():
-            return None
+            raise ColaVaciaError ("la cola esta vacia")
         return self._datos._cabeza.dato
 
     def esta_vacia(self):

@@ -1,6 +1,6 @@
 class ArchivoInvalidoError(Exception):
      """Se lanza cuando un archivo no cumple el formato esperado."""
-pass
+     pass
 
 
 class ColeccionLlenaError(Exception):

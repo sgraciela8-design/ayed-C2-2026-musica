@@ -5,7 +5,7 @@ class ListaEnlazada:
     
 
     def __init__(self): 
-       self._cabeza = None
+       self._cabeza = None #no hay nodos aun
        self._tamanio = 0 
 
 
@@ -17,7 +17,7 @@ class ListaEnlazada:
         return self._tamanio
  
 
-    def insertar_al_inicio(self, dato):
+    def insertar_al_inicio(self, dato): #crea un nuevo nodo
         nuevo = Nodo(dato,self._cabeza)
         self._cabeza = nuevo
         self._tamanio += 1
@@ -33,12 +33,22 @@ class ListaEnlazada:
             while actual is not None and actual.siguiente is not None:
                 actual = actual.siguiente
             if actual is not None:
+<<<<<<< Updated upstream
                 actual.siguiente = nuevo
         self._tamanio += 1
         
 
     def insertar_ordenado(self, dato, clave): #si esta vacia o se incerta al inicio
         if self.esta_vacia() or (self._cabeza is not None and clave(dato) < clave(self._cabeza.dato)):
+=======
+               actual.siguiente = nuevo
+
+        self._tamanio += 1
+        
+
+    def insertar_ordenado(self, dato, clave): # si está vacía o se incerta al inicio
+        if self.esta_vacia() or (self._is not None and clave(actual.siguiente.dato) < clave(dato):
+>>>>>>> Stashed changes
             self.insertar_al_inicio(dato)
             return
         
@@ -53,6 +63,7 @@ class ListaEnlazada:
         
 
     def eliminar(self, dato):
+<<<<<<< Updated upstream
         if self.esta_vacia():
             return False
         if self._cabeza.dato ==dato:
@@ -61,6 +72,22 @@ class ListaEnlazada:
             return True
         actual= self._cabeza
         while actual.siguiente is not None:
+=======
+        if self.esta_vacia(): #caso 1 lista vacia 
+            return None
+        dato = self._cabeza.dato       
+            self._cabeza = self._cabeza.siguiente
+            self._tamanio -= 1
+            return False
+
+        if self._cabeza is not None and self._cabeza.dato == dato:
+            self._cabeza = self._cabeza.siguiente
+            self.tamanio -=1
+            retur True
+
+        actual = self._cabeza
+        while actual is not None and actual.siguiente is not None:
+>>>>>>> Stashed changes
             if actual.siguiente.dato == dato:
                 actual.siguiente = actual.siguiente.siguiente
                 self._tamanio -= 1 
@@ -121,6 +148,7 @@ class IteradorLista:
 
 
     def __iter__(self):
+<<<<<<< Updated upstream
         return self
     def __next__(self):
         if self.actual is None:
@@ -128,4 +156,25 @@ class IteradorLista:
         dato = self._actual.dato
         self._actual = self._actual.siguiente
         return dato
+=======
+        actual = self._cabeza
+        while actual is not None:
+            yield actual.dato
+            actual = actual.siguiente
+
+    class _Iterador: #clase interna recorre nodo a nodo
+         def __init__(self, cabeza):
+             self.actual = cabeza 
+        
+         def __iter__(self):
+            return self
+         
+         def __next__(self):
+             if self.actual is None:
+                 raise StopIteration #fin de la lista  
+             dato = self .actual.dato
+             self.actual = self.actual.siguiente
+             return dato
+
+>>>>>>> Stashed changes
   
