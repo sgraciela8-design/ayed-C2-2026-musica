@@ -32,7 +32,7 @@ def atender_cola():
         print("No hay elementos en la cola.")
 
 def pendiente():
-    print("Todavía no está implementado. Completae en la entrega que corresponde.")
+    print("Todavía no está implementado. Completar en la entrega que corresponde.")
 
 
 def agregar_a_coleccion_principal():
