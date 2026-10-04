@@ -1,5 +1,3 @@
-from typing import Self
-
 from src.dominio.cancion import Cancion
 from src.tads.lista_enlazada import ListaEnlazada
 from src. excepciones import ColeccionLlenaError 
@@ -17,11 +15,7 @@ class Biblioteca:
             raise ColeccionLlenaError(
                "La playlist alcanzó su capacidad máxima."
             )
-        
-            
-        
-         # 2. Relaciones de versiones directas (id_original -> lista de id_derivadas)
-        
+         # 2. Relaciones de versiones directas (id_original -> lista de id_derivad
          self.versiones_directas = {
          1: [],
          2: [3]
