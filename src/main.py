@@ -26,9 +26,24 @@ def ejecutar_historial():
     except PilaVaciaError:
         print("No hay acciones en el historial para deshacer.")
 
-def pendiente():
-    print("Todavía no está implementado. Completar en la entrega que corresponde.")
+def atender_cola():
+    """Opción 8: Cola para atención/turnos."""
+    try:
+        elemento = cola_turnos.desencolar()
+        print(f"Atendiendo/reproduciendo: {elemento}")
+    except ColaVaciaError:
+        print("No hay elementos en la cola.")
 
+def agregar_a_coleccion_principal():
+    """Opción 6: Colección principal (playlist / equipo de 6)."""
+    # Ejemplo solicitando id o elemento a agregar
+    id_elem = input("Ingresá el ID a agregar a la colección: ").strip()
+    try:
+        # Aquí llamas al método de tu biblioteca/colección que agrega
+        biblioteca.agregar_a_coleccion(id_elem)
+        print("Elemento agregado exitosamente.")
+    except ColeccionLlenaError:
+        print("El equipo está lleno (máximo 6). No se puede agregar más.")
 
 def listar_catalogo():
     canciones = biblioteca.obtener_canciones()
