@@ -31,8 +31,8 @@ def atender_cola():
     except ColaVaciaError:
         print("No hay elementos en la cola.")
 
-#def pendiente():
-   # print("Todavía no está implementado. Completae en la entrega que corresponde.")
+def pendiente():
+    print("Todavía no está implementado. Completae en la entrega que corresponde.")
 
 
 def agregar_a_coleccion_principal():
