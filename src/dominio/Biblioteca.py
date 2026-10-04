@@ -1,6 +1,6 @@
 from src.dominio.cancion import Cancion
 from src.tads.lista_enlazada import ListaEnlazada
-from src. excepciones import ColeccionLlenaError 
+from src.excepciones import ColeccionLlenaError 
 
 
 class Biblioteca:
@@ -8,7 +8,12 @@ class Biblioteca:
       def __init__(self):
         self.capacidad_maxima = 6
         self.canciones = ListaEnlazada()
-
+        self.versiones_directas = {
+             1: [],
+             2: [3]
+        }
+      self.cargar_canciones_iniciales()
+     
       #1. Lista con instancias de Cancion
       def agregar_canciones(self, cancion):
          if self.canciones.tamanio() >= self.capacidad_maxima:
