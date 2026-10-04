@@ -4,7 +4,7 @@ from src.tads.lista_enlazada import ListaEnlazada
 class Pila:
     """TAD pila implementado sobre ListaEnlazada."""
 
-def __init__(self):
+def__init__(self):
     self._datos = ListaEnlazada() #_datos = atributo interno
 
 def apilar(self, dato): #agrega al inicio de la pila
