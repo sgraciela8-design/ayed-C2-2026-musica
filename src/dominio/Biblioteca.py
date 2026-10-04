@@ -5,10 +5,11 @@ from src.excepciones import ColeccionLlenaError
 
 class Biblioteca:
      
-      def __init__(self):
-        self.capacidad_maxima = 6
-        self.canciones = ListaEnlazada()
-        self.versiones_directas = {
+     def __init__(self):
+          self.capacidad_maxima = 6
+          self.canciones = ListaEnlazada()
+          
+          self.versiones_directas = {
              1: [],
              2: [3]
         }
@@ -20,13 +21,7 @@ class Biblioteca:
             raise ColeccionLlenaError(
                "La playlist alcanzó su capacidad máxima."
             )
-         # 2. Relaciones de versiones directas (id_original -> lista de id_derivad
-         self.versiones_directas = {
-         1: [],
-         2: [3]
-       }
-         self.cargar_canciones_iniciales()  # Carga las canciones iniciales al crear la biblioteca
-
+      # Carga las canciones iniciales al crear la biblioteca
       def cargar_canciones_iniciales(self):
                  #carga el catálogo al inicializar
           self.agregar_cancion(Cancion(1, "Crimen", "Gustavo Cerati", "Fuerza natural", "2006"))
