@@ -31,8 +31,8 @@ def atender_cola():
     except ColaVaciaError:
         print("No hay elementos en la cola.")
 
-def pendiente():
-    print("Todavía no está implementado. Completae en la entrega que corresponde.")
+#def pendiente():
+   # print("Todavía no está implementado. Completae en la entrega que corresponde.")
 
 
 def agregar_a_coleccion_principal():
@@ -41,7 +41,7 @@ def agregar_a_coleccion_principal():
     id_elem = input("Ingresá el ID a agregar a la colección: ").strip()
     try:
         # Aquí llamas al método de tu biblioteca/colección que agrega
-        biblioteca.agregar_a_coleccion(id_elem)
+        biblioteca.agregar_cancion(id_elem)
         print("Elemento agregado exitosamente.")
     except ColeccionLlenaError:
         print("El equipo está lleno (máximo 6). No se puede agregar más.")
@@ -118,14 +118,18 @@ def main():
             print("Chau.")
         elif opcion == "1":
             listar_catalogo()
+        elif opcion == "2":
+             #ver_detalle(): 
         elif opcion == "5":
             operacion_recursiva() # Ahora ejecuta la función recursiva       
+        elif opcion == "6":
+            agregar_a_coleccion_principal()
         elif opcion == "7":
             mostrar_historial()
         elif opcion == "8":
             mostrar_cola()
-        elif opcion in {"2", "3", "4", "6", "9"}:
-            pendiente()
+        elif opcion in { "3", "4","9"}:
+            print("Todavía no está implementado. Completae en la entrega que corresponde.")
         else:
             print("Opción inválida.")
 

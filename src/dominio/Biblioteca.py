@@ -1,3 +1,5 @@
+from typing import Self
+
 from src.dominio.cancion import Cancion
 from src.tads.lista_enlazada import ListaEnlazada
 from src. excepciones import ColeccionLlenaError 
@@ -15,15 +17,16 @@ class Biblioteca:
             raise ColeccionLlenaError(
                "La playlist alcanzó su capacidad máxima."
             )
-            self.canciones.insertar_al_final(cancion)       
+        
             
         
          # 2. Relaciones de versiones directas (id_original -> lista de id_derivadas)
         
          self.versiones_directas = {
-                 1: [2, 3],
-                 2: [3]
-            }
+         1: [],
+         2: [3]
+       }
+         self.cargar_canciones_iniciales()  # Carga las canciones iniciales al crear la biblioteca
 
       def cargar_canciones_iniciales(self):
                  #carga el catálogo al inicializar
@@ -40,13 +43,7 @@ class Biblioteca:
         if self.canciones.tamanio() >= self.capacidad_maxima:
             raise ColeccionLlenaError("La playlist alcanzó su capacidad máxima.")
         self.canciones.insertar_al_final(cancion)
-
-        #Relaciones de versiones directas (id_original  -> lista de id_derivadas)
-        #self.versiones_directas = { # pyright: ignore[reportAttributeAccessIssue]
-           # 1: [2, 3],
-           # 2: [3]
         
-        #}
 
       def obtener_canciones(self):
         return self.canciones
