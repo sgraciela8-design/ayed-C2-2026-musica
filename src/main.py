@@ -9,7 +9,7 @@ class Pila:
         if self.esta_vacia():
             raise PilaVaciaError("No hay elementos para deshacer.")
         try:
-            item = coleccion.desapilar()
+            item = coleccion.desencolar() #algo pasa con este item, que no me lo esta agarrando#
         except ColaVaciaError as e:
             print(f"No se puede desenchufar: {e} ")
         except ColeccionLlenaError as e:
