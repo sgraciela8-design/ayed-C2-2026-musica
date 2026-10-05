@@ -64,9 +64,9 @@ Inmutable es todo lo contrario, no se pueden modificar sus datos una vez creado,
 
 | TAD | Operaciones | Invariante |
 | --- | --- | --- |
-| ListaEnlazada |  |  |
-| Pila |  |  |
-| Cola |  |  |
+| ListaEnlazada |insertar_al_final(), recorrido mediante iterador, tamanio() | Los nodos mantienen sus enlaces correctamente y el tamaño representa la cantidad de elementos almacenados. |
+| Pila | apilar(), desapilar(), ver_tope(), esta_vacia() |El último elemento agregado es el primero en salir (LIFO). No se puede desapilar una pila vacía. |
+| Cola |encolar(), desencolar(), ver_frente(), esta_vacia()  | El primer elemento agregado es el primero en salir (FIFO). No se puede desencolar una cola vacía. |
 
 Dónde se usa cada uno en el dominio.
 
