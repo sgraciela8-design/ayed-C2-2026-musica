@@ -38,8 +38,27 @@ def atender_cola():
     except ColaVaciaError:
         print("No hay canciones en la cola.")
 
-def pendiente():
-    print("Todavía no está implementado. Completar en la entrega que corresponde.")
+def  ver_detalle():
+    print("\n--- VER DETALLE DE UNA CANCIÓN ---")
+
+    try:
+        id_cancion = int(input("Ingresá el ID de la canción: "))
+        cancion = biblioteca.buscar_cancion_por_id(id_cancion)
+
+        if cancion is None:
+            print("No existe una canción con ese ID.")
+            return
+        #guardar en el historial la canción que se está buscando
+        historial.apilar(cancion)
+
+        print(f"\nDetalle de la canción [{cancion.id}]:")
+        print(f"Título: {cancion.titulo}")
+        print(f"Artista: {cancion.artista}")
+        print(f"Álbum: {cancion.album}")
+        print(f"Año: {cancion.anio}")
+
+    except ValueError:
+        print("ID inválido. Debe ser un número entero.")
 
 
 def agregar_a_coleccion_principal():
@@ -145,8 +164,7 @@ def main():
         elif opcion == "1":
             listar_catalogo()
         elif opcion == "2":
-             #ver_detalle() 
-            pendiente()
+            ver_detalle()
         elif opcion == "5":
             operacion_recursiva() # Ahora ejecuta la función recursiva       
         elif opcion == "6":
