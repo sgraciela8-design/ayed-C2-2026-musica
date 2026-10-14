@@ -14,9 +14,11 @@ class ColeccionVaciaError(Exception):
 
 
 class PilaVaciaError(Exception):
+    """Se lanza cuando se intenta acceder a un elemento de una pila vacía."""
     pass
 
 
 class ColaVaciaError(Exception):
+    """Se lanza cuando se intenta acceder a un elemento de una cola vacía."""
     pass
 
