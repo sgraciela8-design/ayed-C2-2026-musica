@@ -28,6 +28,10 @@ def atender_cola():
     try:
          cancion = cola_reproduccion.desencolar()
 
+         if cancion is None:
+             print("No hay canciones en la cola.")
+             return
+
          historial.apilar(cancion)
 
          print(f"Reproduciendo: {cancion.titulo} - {cancion.artista}")
@@ -39,7 +43,7 @@ def pendiente():
 
 
 def agregar_a_coleccion_principal():
-    """Opción 7 y 8: Colección principal (playlist )."""
+    """Opción 6, 7 y 8: Colección principal (playlist )."""
     # Ejemplo solicitando id o elemento a agregar
     try:   
         id_elem = int(input("Ingresá el ID a agregar a la colección: "))
