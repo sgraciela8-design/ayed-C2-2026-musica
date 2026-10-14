@@ -24,27 +24,43 @@ def ejecutar_historial():
         print("No hay acciones en el historial para deshacer.")
 
 def atender_cola():
-    """Opción 8: Cola para atención/turnos."""
+    """Opción 8: Cola de reproducción."""
     try:
-        elemento = cola_reproduccion.desencolar()
-        print(f"Atendiendo/reproduciendo: {elemento}")
+         cancion = cola_reproduccion.desencolar()
+
+         historial.apilar(cancion)
+
+         print(f"Reproduciendo: {cancion.titulo} - {cancion.artista}")
     except ColaVaciaError:
-        print("No hay elementos en la cola.")
+        print("No hay canciones en la cola.")
 
 def pendiente():
     print("Todavía no está implementado. Completar en la entrega que corresponde.")
 
 
 def agregar_a_coleccion_principal():
-    """Opción 6: Colección principal (playlist / equipo de 6)."""
+    """Opción 7 y 8: Colección principal (playlist )."""
     # Ejemplo solicitando id o elemento a agregar
-    id_elem = input("Ingresá el ID a agregar a la colección: ").strip()
-    try:
+    try:   
+        id_elem = int(input("Ingresá el ID a agregar a la colección: "))
+
         # Aquí llamas al método de tu biblioteca/colección que agrega
-        biblioteca.agregar_cancion(id_elem)
-        print("Elemento agregado exitosamente.")
-    except ColeccionLlenaError:
-        print("El equipo está lleno (máximo 6). No se puede agregar más.")
+        cancion = biblioteca.buscar_cancion_por_id(id_elem)
+        
+        if cancion is None:
+            print("No existe una canción con ese ID.")
+            return
+        
+        biblioteca.agregar_cancion(cancion)
+
+        cola_reproduccion.encolar(cancion)
+
+        print(f"Agregada: {cancion.titulo}")
+        
+    except ValueError:
+        print("ID inválido. Debe ser un número entero.")
+        
+    except ColeccionLlenaError:        print("La playlist alcanzo su capacidad máxima")
 
 
 def listar_catalogo():
@@ -88,12 +104,19 @@ def mostrar_menu():
     print("0. Salir")
 
 def mostrar_historial():
-    if historial.esta_vacia():
-        print("No hay canciones en el historial. ")
-        return
+    try:
+        ultima = historial.ver_tope()
 
-    print("Última canción escuchada: ")
-    print(historial.ver_tope())
+        if ultima is None:
+            print("No hay canciones en el historial.")
+            return
+
+        print(f"Última canción escuchada: "
+              f"{ultima.titulo} - {ultima.artista} "
+              f"({ultima.album} - {ultima.anio})")
+            
+    except PilaVaciaError:
+        print("No hay canciones en el historial.")
 
 def mostrar_cola():
     if cola_reproduccion.esta_vacia():
@@ -127,7 +150,7 @@ def main():
         elif opcion == "7":
             mostrar_historial()
         elif opcion == "8":
-            mostrar_cola()
+            atender_cola()
         elif opcion in {"2","3","4","9"}:
             print("Todavía no está implementado. Completae en la entrega que corresponde.")
         else:

@@ -6,7 +6,7 @@ from src.excepciones import ColeccionLlenaError
 
 class Biblioteca:
     def __init__(self):
-        self.capacidad_maxima = 6
+        self.capacidad_maxima = 100
         self.canciones = ListaEnlazada()
         self.coleccion_principal = ListaEnlazada()
 
@@ -47,11 +47,11 @@ class Biblioteca:
         return None
 
     def agregar_cancion(self, cancion):
-        if self.coleccion_principal.tamanio() >= self.capacidad_maxima:
+        if self.canciones.tamanio() >= self.capacidad_maxima:
             raise ColeccionLlenaError(
                 "La colección principal alcanzó su capacidad máxima."
             )
-        self.coleccion_principal.insertar_al_final(cancion)
+        self.canciones.insertar_al_final(cancion)
 
     def obtener_coleccion_principal(self):
         return self.coleccion_principal
