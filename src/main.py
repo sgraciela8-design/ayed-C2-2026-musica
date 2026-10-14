@@ -101,7 +101,7 @@ def mostrar_menu():
     print("3. Buscar")
     print("4. Ordenar")
     print("5. Operación recursiva")
-    print("6. Colección principal (equipo / menú / playlist)")
+    print("6. Colección principal (playlist)")
     print("7. Historial (pila)")
     print("8. Cola")
     print("9. Guardar / cargar archivos")
