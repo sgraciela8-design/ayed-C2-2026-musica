@@ -46,6 +46,13 @@ class Biblioteca:
                 return cancion
         return None
 
+    def buscar_por_titulo(self, titulo):
+        for cancion in self.canciones:
+            if cancion.titulo.lower() == titulo.lower():
+                return cancion
+
+        return None
+
     def agregar_cancion(self, cancion):
         if self.canciones.tamanio() >= self.capacidad_maxima:
             raise ColeccionLlenaError(
