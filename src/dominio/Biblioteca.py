@@ -6,7 +6,7 @@ from src.excepciones import ColeccionLlenaError
 
 class Biblioteca:
     def __init__(self):
-        self.capacidad_maxima = 100
+        self.capacidad_maxima = 10
         self.canciones = ListaEnlazada()
         self.coleccion_principal = ListaEnlazada()
 
