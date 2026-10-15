@@ -1,4 +1,5 @@
 from src.config import TEMA
+from src.dominio import cancion
 from src.dominio.Biblioteca import Biblioteca
 from src.tads.cola import Cola
 from src.tads.pila import Pila
@@ -59,7 +60,42 @@ def  ver_detalle():
 
     except ValueError:
         print("ID inválido. Debe ser un número entero.")
+        
+def buscar():
+    print("\n---Buscar Canción---")
+    print("1. Buscar por ID")
+    print("2. Buscar por título")
 
+    opcion = input("Elegí una opción: ").strip()
+
+    if opcion == "1":
+        buscar_por_id()
+
+    elif opcion == "2":
+        buscar_por_titulo()
+
+    else:
+        print("Opción invalida.")
+
+
+def buscar_por_id():
+    try:
+        id_cancion = int(input("Ingresa el ID: "))
+
+        cancion = biblioteca.buscar_cancion_por_id(id_cancion)
+
+        if cancion is None:
+            print("No se encontró la canción.")
+            return
+        print(f"ID: {cancion.id}")
+        print(f"Título: {cancion.titulo}")
+        print(f"Artista: {cancion.artista}")
+        print(f"Álbum: {cancion.album}")
+        print(f"Año: {cancion.anio}")
+
+    except ValueError:
+        print("Debes ingresar un número válido.")
+        
 
 def agregar_a_coleccion_principal():
     """Opción 6, 7 y 8: Colección principal (playlist )."""
@@ -97,7 +133,7 @@ def listar_catalogo():
 
 
 def operacion_recursiva():
-    """Función para probar el Ítem 2: Recursión del dominio."""
+    """Función para probar el Ítem 5: Recursión del dominio."""
     print("\n--- BUSCAR VERSIONES/DERIVADOS (RECURSIVO) ---")
     try:
         id_cancion = int(input("Ingresá el ID de la canción inicial: "))
