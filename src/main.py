@@ -97,7 +97,20 @@ def buscar_por_id():
     except ValueError:
         print("Debes ingresar un número válido.")
 
+def buscar_por_titulo():
 
+    titulo = input("Ingresa el título de la canción: ").strip()
+    cancion = biblioteca.buscar_por_titulo(titulo)
+
+    if cancion is None:
+        print("No se encontró la cancion.")
+        return
+
+    print(f"ID: {cancion.id}")
+    print(f"Título: {cancion.titulo}")
+    print(f"Artista: {cancion.artista}")
+    print(f"Álbum: {cancion.album}")
+    print(f"Año: {cancion.anio}")
 def agregar_a_coleccion_principal():
     """Opción 6, 7 y 8: Colección principal (playlist )."""
     # Ejemplo solicitando id o elemento a agregar
