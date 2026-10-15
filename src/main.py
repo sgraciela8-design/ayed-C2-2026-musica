@@ -111,6 +111,7 @@ def buscar_por_titulo():
     print(f"Artista: {cancion.artista}")
     print(f"Álbum: {cancion.album}")
     print(f"Año: {cancion.anio}")
+
 def agregar_a_coleccion_principal():
     """Opción 6, 7 y 8: Colección principal (playlist )."""
     # Ejemplo solicitando id o elemento a agregar
@@ -215,6 +216,8 @@ def main():
             listar_catalogo()
         elif opcion == "2":
             ver_detalle()
+        elif opcion == "3":
+            buscar()
         elif opcion == "5":
             operacion_recursiva() # Ahora ejecuta la función recursiva       
         elif opcion == "6":
