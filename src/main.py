@@ -62,6 +62,7 @@ def  ver_detalle():
         print("ID inválido. Debe ser un número entero.")
         
 def buscar():
+    """Se habilita la opción buscar lineal y búsquedda binaria"""
     print("\n---Buscar Canción---")
     print("1. Buscar por ID")
     print("2. Buscar por título")
@@ -95,7 +96,7 @@ def buscar_por_id():
 
     except ValueError:
         print("Debes ingresar un número válido.")
-        
+
 
 def agregar_a_coleccion_principal():
     """Opción 6, 7 y 8: Colección principal (playlist )."""
