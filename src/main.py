@@ -73,8 +73,9 @@ def  ver_detalle():
 def buscar():
     """Se habilita la opción buscar lineal y búsquedda binaria"""
     print("\n---Buscar Canción---")
-    print("1. Buscar por ID")
-    print("2. Buscar por título")
+    print("1. Buscar lineal por ID")
+    print("2. Buscar lineal por título")
+    print("3. Buscar binaria por ID")
 
     opcion = input("Elegí una opción: ").strip()
 
@@ -85,7 +86,7 @@ def buscar():
         buscar_por_titulo()
 
     elif opcion == "3":
-        #buscar_binaria_por_id()
+        buscar_binaria()
         print ("Búsqueda binaria aún no implementada.")
 
     else:
