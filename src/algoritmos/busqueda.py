@@ -21,7 +21,7 @@ def busqueda_lineal_por_titulo(canciones, titulo_buscado):
 
 
 def busqueda_binaria_por_id(canciones, id_buscado):
-    #print ("Función pendiente para Entrega 4.")
+    #
     """La colección tiene que estar ordenada por obtener_clave."""
 
 
