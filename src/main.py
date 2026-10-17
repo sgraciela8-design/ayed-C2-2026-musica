@@ -3,6 +3,7 @@ from src.dominio import cancion
 from src.dominio.Biblioteca import Biblioteca
 from src.tads.cola import Cola
 from src.tads.pila import Pila
+from src.algoritmos.busqueda import (busqueda_lineal_por_id, busqueda_lineal_titulo)
 from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
 
 TEMAS = {
@@ -76,21 +77,30 @@ def buscar():
         buscar_por_titulo()
 
     elif opcion == "3":
-        buscar_binaria_por_id()
+        #buscar_binaria_por_id()
+        print ("Búsqueda binaria aún no implementada.")
 
     else:
         print("Opción invalida.")
 
 
 def buscar_por_id():
+    """
+    Cumple consigna, la búsqueda está en algoritmos,
+    es propia, no usa (in - .index())
+    se ejecuta desde la op. Buscar del menú, recorre manualmente la colección.
+    """ 
     try:
-        id_cancion = int(input("Ingresa el ID: "))
+        id_cancion = int(input("Ingresa el ID de la canción: "))
 
-        cancion = biblioteca.buscar_cancion_por_id(id_cancion)
+        canciones = biblioteca.obtener_canciones()
+
+        cancion = busqueda_lineal_por_id(canciones, id_cancion)
 
         if cancion is None:
             print("No se encontró la canción.")
             return
+        
         print(f"ID: {cancion.id}")
         print(f"Título: {cancion.titulo}")
         print(f"Artista: {cancion.artista}")
@@ -103,7 +113,10 @@ def buscar_por_id():
 def buscar_por_titulo():
 
     titulo = input("Ingresa el título de la canción: ").strip()
-    cancion = biblioteca.buscar_por_titulo(titulo)
+
+    canciones = biblioteca.obtener_canciones ()
+
+    cancion  = biblioteca.buscar_por_titulo(titulo)
 
     if cancion is None:
         print("No se encontró la cancion.")
