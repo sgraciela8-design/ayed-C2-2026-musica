@@ -3,7 +3,8 @@ from src.dominio import cancion
 from src.dominio.Biblioteca import Biblioteca
 from src.tads.cola import Cola
 from src.tads.pila import Pila
-from src.algoritmos.busqueda import (busqueda_lineal_por_id, busqueda_lineal_titulo)
+from src.algoritmos.busqueda import (busqueda_lineal_por_id)
+from src.algoritmos.busqueda import (busqueda_lineal_por_titulo)
 from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
 
 TEMAS = {
@@ -116,7 +117,7 @@ def buscar_por_titulo():
 
     canciones = biblioteca.obtener_canciones ()
 
-    cancion  = biblioteca.buscar_por_titulo(titulo)
+    cancion  = busqueda_lineal_por_titulo(canciones, titulo)
 
     if cancion is None:
         print("No se encontró la cancion.")

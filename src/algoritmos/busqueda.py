@@ -8,12 +8,16 @@ def busqueda_lineal_por_id(canciones, id_buscado):
     return None
     raise NotImplementedError
 
-def busqueda_lineal_titulo(canciones, titulo_buscado):
+def busqueda_lineal_por_titulo(canciones, titulo_buscado):
+
+    titulo_buscado = titulo_buscado.strip().lower()
 
     for cancion in canciones:
 
-        if cancion.titulo.lower() == titulo_buscado.lower():
-            return None
+        if cancion.titulo.strip().lower() == titulo_buscado.strip().lower():
+            return cancion
+
+    return None
 
 
 def busqueda_binaria_por_id():
