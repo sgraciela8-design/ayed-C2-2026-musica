@@ -166,7 +166,6 @@ def ordenar():
         )
 
 
-
 def agregar_a_coleccion_principal():
     """Opción 6, 7 y 8: Colección principal (playlist )."""
     # Ejemplo solicitando id o elemento a agregar
