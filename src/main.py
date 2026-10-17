@@ -75,6 +75,9 @@ def buscar():
     elif opcion == "2":
         buscar_por_titulo()
 
+    elif opcion == "3":
+        buscar_binaria_por_id()
+
     else:
         print("Opción invalida.")
 

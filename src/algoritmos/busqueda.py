@@ -1,5 +1,11 @@
-def busqueda_lineal(coleccion, clave, obtener_clave):
+def busqueda_lineal_por_id(canciones, id_buscado):
     """Devuelve el ítem cuya clave coincide, o None."""
+
+    for cancion in canciones:
+
+        if cancion.id == id_buscado:
+            return cancion
+    return None
     raise NotImplementedError
 
 
