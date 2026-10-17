@@ -40,6 +40,17 @@ class Biblioteca:
     def obtener_canciones(self):
         return self.canciones
 
+    def obtener_canciones_como_lista(self):
+     #se genera una copia temporal sobre la que podemos aplicar ordenamiento por selección e insercion
+        canciones_lista = []
+
+        for cancion in self.canciones:
+            canciones_lista.append(cancion)
+
+        return canciones_lista
+
+        
+
     def buscar_cancion_por_id(self, id_cancion):
         for cancion in self.canciones:
             if cancion.id == int(id_cancion):
