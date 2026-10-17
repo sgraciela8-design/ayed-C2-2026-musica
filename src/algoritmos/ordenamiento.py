@@ -20,7 +20,7 @@ def ordenar_seleccion_por_id(canciones):
 
 
 def ordenar_insercion_por_titulo(canciones):
-    """Insertion Sort por título"""
+    """Insertion Sort por título utilizando insertion Sort"""
     """Ordenamiento por inserción. Devuelve una nueva secuencia, no usa sorted."""
 
     for i in range(1, len(canciones)):

@@ -4,8 +4,10 @@ from src.dominio import cancion
 from src.dominio.Biblioteca import Biblioteca
 from src.tads.cola import Cola
 from src.tads.pila import Pila
-from src.algoritmos.busqueda import (busqueda_lineal_por_id)
-from src.algoritmos.busqueda import (busqueda_lineal_por_titulo)
+from src.algoritmos.busqueda import (
+    busqueda_binaria_por_id,
+    busqueda_lineal_por_id,
+    busqueda_lineal_por_titulo)
 from src.algoritmos.ordenamiento import(
     ordenar_seleccion_por_id,
     ordenar_insercion_por_titulo
@@ -90,7 +92,7 @@ def buscar():
         print("Opción invalida.")
 
 
-def buscar_por_id():
+def buscar_por_id(): #opcion 3 implementada
     """
     Cumple consigna, la búsqueda está en algoritmos,
     es propia, no usa (in - .index())
@@ -116,7 +118,7 @@ def buscar_por_id():
     except ValueError:
         print("Debes ingresar un número válido.")
 
-def buscar_por_titulo():
+def buscar_por_titulo(): #opción 3 implementada
 
     titulo = input("Ingresa el título de la canción: ").strip()
 
@@ -133,6 +135,30 @@ def buscar_por_titulo():
     print(f"Artista: {cancion.artista}")
     print(f"Álbum: {cancion.album}")
     print(f"Año: {cancion.anio}")
+
+def buscar_binaria():
+
+    try:
+        id_cancion = int(input("Ingresa el ID de la canción: "))
+
+        canciones = biblioteca.obtener_canciones_como_lista()
+
+        canciones = ordenar_seleccion_por_id(canciones)
+
+        cancion = busqueda_binaria_por_id(canciones, id_cancion)
+
+        if cancion is None:
+            print("No se encontró la canción.")
+            return
+
+        print(f"ID: {cancion.id}")
+        print(f"Título: {cancion.titulo}")
+        print(f"Artista: {cancion.artista}")
+        print(f"Album: {cancion.album}")
+        print(f"Año: {cancion.anio}")
+
+    except ValueError:
+        print("Debes ingresar un número válido.")
 
 def ordenar():
 
