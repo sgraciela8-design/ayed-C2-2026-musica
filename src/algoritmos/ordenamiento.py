@@ -33,7 +33,8 @@ def ordenar_insercion_por_titulo(canciones):
             j >= 0
             and canciones[j].titulo.lower() > actual.titulo.lower()
         ):
-            canciones[j + 1] = canciones[j] j-=1
+            canciones[j + 1] = canciones[j] 
+            j-=1
         canciones[j + 1] = actual
 
     return canciones

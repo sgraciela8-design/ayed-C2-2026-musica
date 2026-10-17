@@ -1,3 +1,4 @@
+from src.algoritmos import ordenamiento
 from src.config import TEMA
 from src.dominio import cancion
 from src.dominio.Biblioteca import Biblioteca
@@ -5,6 +6,10 @@ from src.tads.cola import Cola
 from src.tads.pila import Pila
 from src.algoritmos.busqueda import (busqueda_lineal_por_id)
 from src.algoritmos.busqueda import (busqueda_lineal_por_titulo)
+from src.algoritmos.ordenamiento import(
+    ordenar_seleccion_por_id,
+    ordenar_insercion_por_titulo
+)
 from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
 
 TEMAS = {
@@ -129,6 +134,39 @@ def buscar_por_titulo():
     print(f"Álbum: {cancion.album}")
     print(f"Año: {cancion.anio}")
 
+def ordenar():
+
+    print("\n ---Ordenar---")
+    print("1. Selection Sort por ID")
+    print("2. Insertion Sort por título")
+
+    opcion = input("> ").strip()
+
+    canciones = biblioteca.obtener_canciones_como_lista()
+
+    if opcion == "1":
+
+        canciones = ordenar_seleccion_por_id(canciones
+    )
+
+    elif opcion == "2":
+
+        canciones = ordenar_insercion_por_titulo(canciones
+    )
+    else:
+        print("Opción inválida.")
+        return
+
+    print("\n ---Resultado---")
+
+    for cancion in canciones:
+        print(
+            f"{cancion.id} -"
+            f"{cancion.titulo} "
+        )
+
+
+
 def agregar_a_coleccion_principal():
     """Opción 6, 7 y 8: Colección principal (playlist )."""
     # Ejemplo solicitando id o elemento a agregar
@@ -151,7 +189,8 @@ def agregar_a_coleccion_principal():
     except ValueError:
         print("ID inválido. Debe ser un número entero.")
         
-    except ColeccionLlenaError:        print("La playlist alcanzo su capacidad máxima")
+    except ColeccionLlenaError:
+        print("La playlist alcanzo su capacidad máxima")
 
 
 def listar_catalogo():
@@ -235,6 +274,8 @@ def main():
             ver_detalle()
         elif opcion == "3":
             buscar()
+        elif opcion == "4":
+            ordenar()
         elif opcion == "5":
             operacion_recursiva() # Ahora ejecuta la función recursiva       
         elif opcion == "6":
@@ -243,7 +284,7 @@ def main():
             mostrar_historial()
         elif opcion == "8":
             atender_cola()
-        elif opcion in {"4","9"}:
+        elif opcion in {"9"}:
             print("Todavía no está implementado. Completar en la entrega que corresponde.")
         else:
             print("Opción inválida.")
