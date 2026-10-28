@@ -2,7 +2,7 @@
 from src.tads.nodo import Nodo
 
 class ListaEnlazada:
-    """TAD lista enlazada simple. No usar list de Python por debajo."""
+    """TAD lista enlazada simple"""
 
     def __init__(self):
         self._cabeza = None #no hay nodos aun
