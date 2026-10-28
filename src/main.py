@@ -87,7 +87,7 @@ def buscar():
 
     elif opcion == "3":
         buscar_binaria()
-        print ("Búsqueda binaria")
+        #print ("Búsqueda binaria")
 
     else:
         print("Opción invalida.")
