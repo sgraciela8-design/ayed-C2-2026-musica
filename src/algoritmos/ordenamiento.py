@@ -1,6 +1,6 @@
 def ordenar_seleccion_por_id(canciones):
     """Selection Sort por ID"""
-    """Ordenamiento por selección. Devuelve una nueva secuencia, no usa sorted."""
+    """Ordenamiento por selección"""
 
     n = len(canciones)
 
@@ -16,12 +16,12 @@ def ordenar_seleccion_por_id(canciones):
             canciones[indice_minimo], canciones[i]
         )
     return canciones
-    raise NotImplementedError
+    #raise NotImplementedError
 
 
 def ordenar_insercion_por_titulo(canciones):
     """Insertion Sort por título utilizando insertion Sort"""
-    """Ordenamiento por inserción. Devuelve una nueva secuencia, no usa sorted."""
+    """Ordenamiento por inserción"""
 
     for i in range(1, len(canciones)):
 
@@ -38,4 +38,4 @@ def ordenar_insercion_por_titulo(canciones):
         canciones[j + 1] = actual
 
     return canciones
-    raise NotImplementedError
+    #raise NotImplementedError

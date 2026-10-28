@@ -236,7 +236,7 @@ def operacion_recursiva():
         if versiones:
             print(f"\nVersiones encontradas ({len(versiones)}):")
             for v in versiones:
-                print(f" -> [{v.id}] {v.titulo} - {v.artista}")
+                print(f" -> [{v.id}] {v.titulo} - {v.artista}")               
         else:
             print("\nEsta canción no tiene versiones o derivados (Caso Base cumplido).")
     except ValueError:
