@@ -72,6 +72,41 @@ Dónde se usa cada uno en el dominio.
 
 ## 5. Complejidad (E4)
 
+# 5. Complejidad y Mediciones de Tiempo
+
+## 5.1 Tabla de Complejidad Algorítmica (Ítem 4.4)
+
+| Operación | Tiempo (Teórico) | Espacio | Justificación (Por qué) |
+| :--- | :---: | :---: | :--- |
+| **Listar catálogo** | $O(n)$ | $O(1)$ | Recorre los $n$ elementos del catálogo una sola vez de forma secuencial. |
+| **Búsqueda lineal** | $O(n)$ peor / $O(1)$ mejor | $O(1)$ | En el peor caso evalúa cada elemento hasta el final; en el mejor encuentra la clave en el primer elemento. |
+| **Búsqueda binaria** | $O(\log n)$ | $O(1)$ | Requiere que la colección esté ordenada; cada comparación reduce a la mitad el espacio de búsqueda. |
+| **Selection Sort** | $O(n^2)$ siempre | $O(1)$ | Contiene dos bucles anidados. Realiza comparaciones sistemáticas independientemente de si la lista está ordenada. |
+| **Insertion Sort** | $O(n)$ mejor / $O(n^2)$ peor | $O(1)$ | Si la lista está ordenada solo compara una vez por elemento $O(n)$; si está invertida debe desplazar todos los elementos $O(n^2)$. |
+| **Ver detalle de un ítem** | $O(n)$ | $O(1)$ | Realiza una búsqueda por ID recorriendo la colección hasta encontrar la coincidencia. |
+
+---
+
+## 5.2 Mediciones de Tiempo con `time.perf_counter()` (Ítem 4.5)
+
+Se realizaron mediciones sobre el dataset original ($n = 6$) y sobre una copia ampliada 10 veces ($n = 60$) mediante el script `src/medir_tiempos.py`.
+
+| Operación | Tamaño ($n$) | Tiempo (segundos) |
+| :--- | :---: | :---: |
+| **Búsqueda lineal (ID)** | 6 | 0.00000301 s |
+| **Búsqueda lineal ($n \times 10$)** | 60 | 0.00000106 s |
+| **Búsqueda binaria (ID)** | 6 | 0.00000420 s |
+| **Búsqueda binaria ($n \times 10$)** | 60 | 0.00000211 s |
+| **Selection Sort (ID)** | 6 | 0.00000363 s |
+| **Selection Sort ($n \times 10$)** | 60 | 0.00006512 s |
+| **Insertion Sort (Título)** | 6 | 0.00000720 s |
+| **Insertion Sort ($n \times 10$)** | 60 | 0.00016738 s |
+
+### Anotaciones sobre las mediciones:
+- **Algoritmos de ordenamiento ($O(n^2)$):** Muestran el incremento cuadrático esperado. Al multiplicar el dataset por 10, los tiempos aumentan considerablemente (por ejemplo, Selection Sort pasa de ~0.000003 s a ~0.000065 s).
+- **Algoritmos de búsqueda:** Dado el tamaño reducido del dataset en memoria RAM, los tiempos de búsqueda lineal y binaria están en el orden de los microsegundos, donde pequeñas variaciones del procesador pueden influir en las diferencias de lectura.
+
+
 | Operación | Tiempo | Espacio | Por qué |
 | --- | --- | --- | --- |
 |  |  |  |  |
