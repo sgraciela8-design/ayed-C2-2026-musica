@@ -21,10 +21,7 @@ def busqueda_lineal_por_titulo(canciones, titulo_buscado):
 
 
 def busqueda_binaria_por_id(canciones, id_buscado):
-    #
-    """La colección tiene que estar ordenada por obtener_clave."""
-
-
+    #La colección tiene que estar ordenada por obtener_clave.
     izquierda = 0
     derecha = len(canciones) -1
 
@@ -40,5 +37,5 @@ def busqueda_binaria_por_id(canciones, id_buscado):
         else:
             derecha = medio -1
 
-        return None
+    return None
     raise NotImplementedError
