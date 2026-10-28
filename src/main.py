@@ -105,7 +105,7 @@ def buscar_por_id(): #opcion 3
         cancion = busqueda_lineal_por_id(canciones, id_cancion)
 
         if cancion is None:
-            print("No se encontró la canción.")
+            print(3)
             return
         
         print(f"ID: {cancion.id}")
