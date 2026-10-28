@@ -107,16 +107,6 @@ Se realizaron mediciones sobre el dataset original ($n = 6$) y sobre una copia a
 - **Algoritmos de búsqueda:** Dado el tamaño reducido del dataset en memoria RAM, los tiempos de búsqueda lineal y binaria están en el orden de los microsegundos, donde pequeñas variaciones del procesador pueden influir en las diferencias de lectura.
 
 
-| Operación | Tiempo | Espacio | Por qué |
-| --- | --- | --- | --- |
-|  |  |  |  |
-
-Mediciones (`time.perf_counter`):
-
-| Operación | n | segundos |
-| --- | --- | --- |
-|  |  |  |
-
 ## 6. Persistencia (E5)
 
 - Layout del registro binario (campos, `struct`, anchos):
