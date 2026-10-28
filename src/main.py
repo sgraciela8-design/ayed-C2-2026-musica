@@ -87,18 +87,16 @@ def buscar():
 
     elif opcion == "3":
         buscar_binaria()
-        print ("Búsqueda binaria aún no implementada.")
+        print ("Búsqueda binaria")
 
     else:
         print("Opción invalida.")
 
 
-def buscar_por_id(): #opcion 3 implementada
-    """
-    Cumple consigna, la búsqueda está en algoritmos,
+def buscar_por_id(): #opcion 3
+    """Cumple consigna, la búsqueda está en algoritmos,
     es propia, no usa (in - .index())
-    se ejecuta desde la op. Buscar del menú, recorre manualmente la colección.
-    """ 
+    se ejecuta desde la op. Buscar del menú, recorre manualmente la colección""" 
     try:
         id_cancion = int(input("Ingresa el ID de la canción: "))
 
@@ -119,7 +117,7 @@ def buscar_por_id(): #opcion 3 implementada
     except ValueError:
         print("Debes ingresar un número válido.")
 
-def buscar_por_titulo(): #opción 3 implementada
+def buscar_por_titulo(): #opción 3
 
     titulo = input("Ingresa el título de la canción: ").strip()
 
@@ -194,7 +192,7 @@ def ordenar():
 
 
 def agregar_a_coleccion_principal():
-    """Opción 6, 7 y 8: Colección principal (playlist )."""
+    """Opción 6, 7 y 8: Colección principal (playlist)"""
     # Ejemplo solicitando id o elemento a agregar
     try:   
         id_elem = int(input("Ingresá el ID a agregar a la colección: "))
@@ -225,7 +223,7 @@ def listar_catalogo():
     # Usamos atributos de objeto (POO)
     for item in canciones:
         #print(type(item))
-        print(f"{item.id:>2} {item.titulo} - {item.artista} ({item.album}, {item.anio})")
+        print(f"{item.id:>2} {item.titulo} {item.artista} ({item.album}, {item.anio})")
     print("Esto es todo por ahora")
 
 
