@@ -17,7 +17,7 @@ class Biblioteca:
 
         self.cargar_canciones_iniciales()
 
-    def cargar_canciones_iniciales(self):
+    def cargar_canciones_iniciales(self):  #inserta canciones precargadas
         self.canciones.insertar_al_final(
             Cancion(1, "Crimen", "Gustavo Cerati", "Fuerza natural", "2006")
         )
@@ -38,7 +38,7 @@ class Biblioteca:
         )
 
     def obtener_canciones(self):
-        return self.canciones
+        return self.canciones #devuelve la lista enlazada completa
 
     def obtener_canciones_como_lista(self):
      #se genera una copia temporal sobre la que podemos aplicar ordenamiento por selección e insercion
