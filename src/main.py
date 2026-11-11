@@ -13,7 +13,7 @@ from src.algoritmos.ordenamiento import(
     ordenar_insercion_por_titulo
 )
 from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
-
+from src.persistencia.texto import cargar_csv, guardar_csv
 TEMAS = {
     "pokedex": "Pokédex",
     "recetario": "Recetario",
@@ -280,6 +280,8 @@ def mostrar_cola():
     print("Próxima canción:")
     print(cola_reproduccion.ver_frente())
 
+#filas = cargar_csv("data/canciones.csv")
+#print(filas[0])  #esto es solo para verificar que se cargó correctamente
 
 def main():
     if TEMA not in TEMAS:
