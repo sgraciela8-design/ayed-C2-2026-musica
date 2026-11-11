@@ -74,8 +74,6 @@ Dónde se usa cada uno en el dominio.
 
 # 5. Complejidad y Mediciones de Tiempo
 
-## 5.1 Tabla de Complejidad Algorítmica (Ítem 4.4)
-
 | Operación | Tiempo (Teórico) | Espacio | Justificación (Por qué) |
 | :--- | :---: | :---: | :--- |
 | **Listar catálogo** | $O(n)$ | $O(1)$ | Recorre los $n$ elementos del catálogo una sola vez de forma secuencial. |
