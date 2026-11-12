@@ -1,7 +1,10 @@
 
+import csv
+
 from src.dominio.cancion import Cancion
 from src.tads.lista_enlazada import ListaEnlazada
 from src.excepciones import ColeccionLlenaError
+from src.persistencia.texto import cargar_csv
 
 
 class Biblioteca:
@@ -15,7 +18,34 @@ class Biblioteca:
             2: [3]
         }
 
-        self.cargar_canciones_iniciales()
+        self.cargar_desde_csv("data/canciones.csv")
+    def cargar_desde_csv(self, ruta):
+
+        filas = cargar_csv("data/canciones.csv")
+
+        for fila in filas:
+
+            cancion = Cancion(
+                fila["id"],
+                fila["titulo"],
+                fila["artista"],
+                fila["album"],
+                fila["anio"]
+            )
+            self.canciones.insertar_al_final(cancion)
+    def obtener_filas(self):
+        filas = []
+
+        for cancion in self.canciones:
+            filas.append({
+                "id": cancion.id,
+                "titulo": cancion.titulo,
+                "artista": cancion.artista,
+                "album": cancion.album,
+                "anio": cancion.anio
+            })
+
+        return filas
 
     def cargar_canciones_iniciales(self):  #inserta canciones precargadas
         self.canciones.insertar_al_final(

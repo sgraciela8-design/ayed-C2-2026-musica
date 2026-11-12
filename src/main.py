@@ -15,12 +15,13 @@ from src.algoritmos.ordenamiento import(
 from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
 from src.persistencia.texto import cargar_csv, guardar_csv
 TEMAS = {
-    "pokedex": "Pokédex",
-    "recetario": "Recetario",
+    #"pokedex": "Pokédex",
+    #"recetario": "Recetario",
     "musica": "Biblioteca musical",
 }
 
 biblioteca = Biblioteca()#Instanciamos la clase Biblioteca
+print(biblioteca.obtener_filas()[0])  #esto es solo para verificar que se cargó correctamente
 historial = Pila()
 cola_reproduccion = Cola()
 
@@ -282,7 +283,18 @@ def mostrar_cola():
 
 #filas = cargar_csv("data/canciones.csv")
 #print(filas[0])  #esto es solo para verificar que se cargó correctamente
-
+def guardar_catalogo():
+    encabezados = [
+        "id",
+        "titulo",
+        "artista",
+        "album",
+        "anio"
+    ]
+    filas = biblioteca.obtener_filas()
+    guardar_csv("data/Lista_Canciones.txt", filas, encabezados
+    )
+    print("Catalogo guardado exitosamente en 'data/Lista_Canciones.txt'.")
 def main():
     if TEMA not in TEMAS:
         print("Seteá TEMA en src/config.py: 'pokedex', 'recetario' o 'musica'.")
@@ -310,8 +322,9 @@ def main():
             mostrar_historial()
         elif opcion == "8":
             atender_cola()
-        elif opcion in {"9"}:
-            print("Todavía no está implementado. Completar en la entrega que corresponde.")
+        elif opcion == "9":
+            guardar_catalogo()
+            print("Catalogo guardado exitosamente.")
         else:
             print("Opción inválida.")
 

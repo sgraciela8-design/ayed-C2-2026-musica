@@ -1,7 +1,68 @@
-Titulo, Artista, Album, Género, Año
-Crimen, Gustavo Cerati, Rock, 2006
-Here comes the sun, The Beatles, Abbey Road, Rock, 1969
-Smells like teen spirit, Nirvana, Nevermind, Rock, 1991
-Creep, Radiohead, Ok Computer, Rock,1992
-505, Artic Monkeys, Favourite Worts, Rock,2013
-Demoliendo Hoteles, Charly García, Piano Bar, Rock, 1984
+id,titulo,artista,album,anio
+1,De Musica Ligera,Soda Stereo,Cancion Animal,1990
+2,Persiana Americana,Soda Stereo,Signos,1986
+3,En la Ciudad de la Furia,Soda Stereo,Doble Vida,1988
+4,Crimen,Gustavo Cerati,Ahí vamos,2006
+5,Adios,Gustavo Cerati,Fuerza Natural,2009
+6,Muchacha ojos de papel,Luis Alberto Spinetta,Almendra,1969
+7,Cantata de Puentes Amarillos,Luis Alberto Spinetta,Artaud,1973
+8,Rasguña las Piedras,Sui Generis,Confesiones de Invierno,1973
+9,Seminare,Seru Giran,La Grasa de las Capitales,1979
+10,Los Dinosaurios,Charly Garcia,Clics Modernos,1983
+11,Demoliendo Hoteles,Charly Garcia,Piano Bar,1984
+12,Jijiji,Patricio Rey y sus Redonditos de Ricota,Un Baion para el Ojo Idiota,1988
+13,Ji Ji Ji,Patricio Rey y sus Redonditos de Ricota,En Directo,1992
+14,La Bestia Pop,Patricio Rey y sus Redonditos de Ricota,Oktubre,1986
+15,Alfonsina y el mar,Mercedes Sosa,Mujeres Argentinas,1969
+16,Gracias a la Vida,Mercedes Sosa,Hasta la Victoria,1971
+17,La Balsa,Los Gatos,Los Gatos,1967
+18,El Extraño de Pelo Largo,Almendra,Almendra,1969
+19,Flaca,Andres Calamaro,Honestidad Brutal,1999
+20,Lamento Boliviano,Los Enanitos Verdes,Big Bang,1994
+21,La Guitarra,Los Autenticos Decadentes,Mi Enfermedad,1997
+22,Waka Waka,Shakira,Sale el Sol,2010
+23,Bzrp Music Sessions Vol. 52,Bizarrap,Sessions,2022
+24,Bzrp Music Sessions Vol. 53,Bizarrap,Sessions,2023
+25,Natacha,Wos,Oscuro Extasis,2019
+26,Canguros,Wos,Tres Puntos Suspensivos,2021
+27,Buenos Aires,Nathy Peluso,Calambre,2020
+28,Despecha,Rosalia,Motomami,2022
+29,Titi Me Pregunto,Bad Bunny,Un Verano Sin Ti,2022
+30,Anti-Hero,Taylor Swift,Midnights,2022
+31,Blank Space,Taylor Swift,1989,2014
+32,Bohemian Rhapsody,Queen,A Night at the Opera,1975
+33,Bohemian Rhapsody (Live Aid),Queen,Live Aid,1985
+34,Don't Stop Me Now,Queen,Jazz,1978
+35,Come Together,The Beatles,Abbey Road,1969
+36,Here Comes the Sun,The Beatles,Abbey Road,1969
+37,Get Lucky,Daft Punk,Random Access Memories,2013
+38,One More Time,Daft Punk,Discovery,2000
+39,Rolling in the Deep,Adele,21,2010
+40,Someone Like You,Adele,21,2011
+41,Do I Wanna Know,Arctic Monkeys,AM,2013
+42,505,Arctic Monkeys,Favourite Worst Nightmare,2007
+43,Blinding Lights,The Weeknd,After Hours,2019
+44,Levitating,Dua Lipa,Future Nostalgia,2020
+45,As It Was,Harry Styles,Harry's House,2022
+46,Smells Like Teen Spirit,Nirvana,Nevermind,1991
+47,Wonderwall,Oasis,What's the Story Morning Glory,1995
+48,Wonderwall (Live),Oasis,Familiar to Millions,2000
+49,Take On Me,a-ha,Hunting High and Low,1985
+50,Africa,Toto,Toto IV,1982
+51,Billie Jean,Michael Jackson,Thriller,1982
+52,Billie Jean (Remix),Michael Jackson,Thriller 40,2022
+53,Clocks,Coldplay,A Rush of Blood to the Head,2002
+54,Yellow,Coldplay,Parachutes,2000
+55,Creep,Radiohead,Pablo Honey,1992
+56,Karma Police,Radiohead,OK Computer,1997
+57,Vino Griego,Los Abuelos de la Nada,Vasos y Besos,1983
+58,Lunes Por La Madrugada,Los Abuelos de la Nada,Los Abuelos de la Nada,1982
+59,El Aguante,Divididos,Gol de Mujer,1998
+60,Que Ves,Divididos,Acariciando lo Aspero,1991
+61,Gracias a la Vida,Violeta Parra,Las Ultimas Composiciones,1966
+62,De Musica Ligera (Unplugged),Soda Stereo,Comfort y Musica Para Volar,1996
+63,Flaca (En vivo),Andres Calamaro,Vivo,2000
+64,Creep (Live),Radiohead,The Astoria London,1994
+65,Yellow (Live),Coldplay,Live 2003,2003
+66,Blank Space (Acoustic),Taylor Swift,1989,2014
+67,Get Lucky (Daft Punk Remix),Daft Punk,Random Access Memories,2013
