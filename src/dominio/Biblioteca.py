@@ -4,7 +4,9 @@ import csv
 from src.dominio.cancion import Cancion
 from src.tads.lista_enlazada import ListaEnlazada
 from src.excepciones import ColeccionLlenaError
-from src.persistencia.texto import cargar_csv
+from src.persistencia.texto import cargar_csv, guardar_csv
+from src.persistencia.binario import (guardar_binario, cargar_binario,actualizar_registro, posicion_del_id)
+
 
 
 class Biblioteca:
@@ -94,13 +96,45 @@ class Biblioteca:
 
         return None
 
+        """Alta persistente
+        alta persistente: se agrega la canción a la lista enlazada y se guarda en el archivo binario y csv
+        """
     def agregar_cancion(self, cancion):
         if self.canciones.tamanio() >= self.capacidad_maxima:
             raise ColeccionLlenaError(
                 "La colección principal alcanzó su capacidad máxima."
             )
         self.canciones.insertar_al_final(cancion)
+        self.guardar_todo()  # Guardar en binario y CSV después de agregar la canción
 
+    """Baja persistente
+    baja persistente: se elimina la canción de la lista enlazada y se elimina del archivo binario y csv
+    """
+    def eliminar_cancion(self, id_cancion):
+        cancion = self.buscar_cancion_por_id(id_cancion)
+
+        if cancion is None:
+           return False  # La canción no existe, no se puede eliminar
+        
+        self.canciones.eliminar(cancion)
+        self.guardar_todo()  # Guardar en binario y CSV después de eliminar la canción
+        return True
+
+    """Modificación persistente"""
+    #se modifica el título de la canción y se guarda en el archivo binario y csv
+    def modificar_titulo(self, id_cancion, nuevo_titulo):
+        cancion = self.buscar_cancion_por_id(id_cancion)
+
+        if cancion is None:
+            return False  # La canción no existe, no se puede modificar
+
+        cancion.titulo = nuevo_titulo
+        posicion = posicion_del_id(self.canciones, id_cancion)
+        actualizar_registro("data/canciones.bin", posicion, cancion)
+        self.guardar_todo()  # Guardar en binario y CSV después de modificar el título
+        return True
+
+    
     def obtener_coleccion_principal(self):
         return self.coleccion_principal
 
@@ -124,3 +158,11 @@ class Biblioteca:
             )
 
         return resultado
+
+    def guardar_todo(self): #guarda en binario y csv
+        guardar_csv(
+            "data/canciones.csv",
+            self.obtener_filas(),
+            ["id", "titulo", "artista", "album", "anio"],
+        )
+        guardar_binario("data/canciones.bin", self.canciones)
