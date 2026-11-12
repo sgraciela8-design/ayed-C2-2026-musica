@@ -295,6 +295,7 @@ def guardar_catalogo():
     guardar_csv("data/Lista_Canciones.txt", filas, encabezados
     )
     print("Catalogo guardado exitosamente en 'data/Lista_Canciones.txt'.")
+    
 def main():
     if TEMA not in TEMAS:
         print("Seteá TEMA en src/config.py: 'pokedex', 'recetario' o 'musica'.")
