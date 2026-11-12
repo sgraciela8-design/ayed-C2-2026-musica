@@ -14,6 +14,7 @@ from src.algoritmos.ordenamiento import(
 )
 from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
 from src.persistencia.texto import cargar_csv, guardar_csv
+from src.tads.lista_enlazada import ListaEnlazada
 TEMAS = {
     #"pokedex": "Pokédex",
     #"recetario": "Recetario",
@@ -295,7 +296,7 @@ def guardar_catalogo():
     guardar_csv("data/Lista_Canciones.txt", filas, encabezados
     )
     print("Catalogo guardado exitosamente en 'data/Lista_Canciones.txt'.")
-    
+
 def main():
     if TEMA not in TEMAS:
         print("Seteá TEMA en src/config.py: 'pokedex', 'recetario' o 'musica'.")
@@ -324,8 +325,26 @@ def main():
         elif opcion == "8":
             atender_cola()
         elif opcion == "9":
-            guardar_catalogo()
-            print("Catalogo guardado exitosamente.")
+            print("/n---ARCHIVOS---")
+            print("a) Cargar catálogo desde texto")
+            print("b) Guardar catálogo en texto")
+            print("c) Guardar catálogo en binario")
+            print("d) Cargar catálogo desde binario")
+
+            sub = input("subopción > ").strip().lower()
+            if sub == "a":
+
+                biblioteca.canciones = ListaEnlazada()
+                biblioteca.cargar_desde_csv()
+
+                print("Catálogo cargado desde texto.")
+
+            elif sub == "b":
+
+                guardar_catalogo()
+            
+            elif sub =="c":
+                print("pendiente implementar binario.")
         else:
             print("Opción inválida.")
 
