@@ -335,7 +335,7 @@ def main():
             if sub == "a":
 
                 biblioteca.canciones = ListaEnlazada()
-                biblioteca.cargar_desde_csv()
+                biblioteca.cargar_desde_csv("data/canciones.csv")
 
                 print("Catálogo cargado desde texto.")
 
