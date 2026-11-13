@@ -22,14 +22,15 @@ class ListaEnlazada:
     def insertar_al_final(self, dato):
         nuevo = Nodo(dato)
 
-        if self.esta_vacia():
+        if self._cabeza is None:
             self._cabeza = nuevo
         else:
             actual = self._cabeza
 
-            while actual.siguiente is not None:
+            while actual is not None and actual.siguiente is not None:
                 actual = actual.siguiente
 
+            assert actual is not None
             actual.siguiente = nuevo
 
         self._tamanio += 1
@@ -46,7 +47,7 @@ class ListaEnlazada:
 
     def insertar_ordenado(self, dato, clave):
         # si está vacía o se incerta al inicio
-        if self.esta_vacia() or clave(self._cabeza.dato) >= clave(dato):
+        if self._cabeza is None or clave(self._cabeza.dato) >= clave(dato):
             self.insertar_al_inicio(dato)
             return
 
@@ -59,12 +60,13 @@ class ListaEnlazada:
         ):
             actual = actual.siguiente
 
+        assert actual is not None
         nuevo.siguiente = actual.siguiente
         actual.siguiente = nuevo
         self._tamanio += 1
 
     def eliminar(self, dato):
-        if self.esta_vacia(): #caso 1 lista vacia
+        if self._cabeza is None: #caso 1 lista vacia
             return False
 
         if self._cabeza.dato == dato: #caso 2: el elemento esta en la cabeza
@@ -79,7 +81,7 @@ class ListaEnlazada:
 
         actual = self._cabeza
 
-        while actual.siguiente is not None:
+        while actual is not None and actual.siguiente is not None:
             if actual.siguiente.dato == dato:
                 actual.siguiente = actual.siguiente.siguiente
                 self._tamanio -= 1
@@ -91,7 +93,7 @@ class ListaEnlazada:
 
     def eliminar_primero(self):
         """Quita y retorna el primer elemento (para desapilar o desencolar)."""
-        if self.esta_vacia():
+        if self._cabeza is None:
             return None
 
         dato = self._cabeza.dato
@@ -101,7 +103,7 @@ class ListaEnlazada:
 
     def obtener_primero(self):
         """Retorna el primer elemento sin quitarlo (para ver_tope)."""
-        if self.esta_vacia():
+        if self._cabeza is None:
             return None
 
         return self._cabeza.dato

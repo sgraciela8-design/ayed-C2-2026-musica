@@ -22,7 +22,7 @@ TEMAS = {
 }
 
 biblioteca = Biblioteca()#Instanciamos la clase Biblioteca
-print(biblioteca.obtener_filas()[0])  #esto es solo para verificar que se cargó correctamente
+#print(biblioteca.obtener_filas()[0])  #esto es solo para verificar que se cargó correctamente
 historial = Pila()
 cola_reproduccion = Cola()
 
