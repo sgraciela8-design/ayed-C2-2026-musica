@@ -8,7 +8,7 @@ from src.tads.lista_enlazada import ListaEnlazada
 from src.excepciones import ArchivoInvalidoError
 
 HEADER = struct.Struct("<4scI")  # 4 bytes de firma, 1 byte de version, 4 bytes de cantidad de registros
-FORMATO = struct.Struct("I30s25s30sH")  # id, titulo, artista, album
+FORMATO = struct.Struct("<I30s25s30sH")  # id, titulo, artista, album
 
 MAGIA = b"AYED"
 TEMA = b"M"

@@ -15,7 +15,10 @@ from src.algoritmos.ordenamiento import(
 from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
 from src.persistencia.texto import cargar_csv, guardar_csv
 from src.persistencia.binario import cargar_binario, guardar_binario
+#from src.persistencia.binario import actualizar_registro, posicion_del_id, cargar_binario
+#se utilizó para comprobar la actualización de un registro en binario, ítem 5, recursión del dominio
 from src.tads.lista_enlazada import ListaEnlazada
+
 
 TEMAS = {
     #"pokedex": "Pokédex",
@@ -24,9 +27,10 @@ TEMAS = {
 }
 
 biblioteca = Biblioteca()#Instanciamos la clase Biblioteca
-#print(biblioteca.obtener_filas()[0])  #esto es solo para verificar que se cargó correctamente
+print("Bienvenido a la Biblioteca Musical!")
 historial = Pila()
 cola_reproduccion = Cola()
+#print(posicion_del_id(biblioteca.canciones, 1)) # solo para comprobar que ubica a posición del objeto
 
 
 def ejecutar_historial():
@@ -356,6 +360,18 @@ def main():
                 print("Catálogo cargado desde binario.")
         else:
             print("Opción inválida.")
+
+#se agregó para realizar la prueba del ítem 5, actualización de registro en binario
+#cancion = biblioteca.buscar_cancion_por_id(1)
+#if cancion is not None:
+    #print("Antes:", cancion.titulo)
+    #cancion.titulo = "PRUEBA_E5"
+    #posicion = posicion_del_id(biblioteca.canciones, 1)
+    #print("Posición: ", posicion)
+    #actualizar_registro("data/canciones.bin", posicion, cancion)
+    #print("registro actualizado.")
+#else:
+    #print("No se encontró la canción con ID 1.")
 
 if __name__ == "__main__":
     main()
