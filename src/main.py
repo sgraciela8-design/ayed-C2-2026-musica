@@ -14,7 +14,9 @@ from src.algoritmos.ordenamiento import(
 )
 from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
 from src.persistencia.texto import cargar_csv, guardar_csv
+from src.persistencia.binario import cargar_binario, guardar_binario
 from src.tads.lista_enlazada import ListaEnlazada
+
 TEMAS = {
     #"pokedex": "Pokédex",
     #"recetario": "Recetario",
@@ -344,7 +346,14 @@ def main():
                 guardar_catalogo()
             
             elif sub =="c":
-                print("pendiente implementar binario.")
+                guardar_binario("data/canciones.bin", biblioteca.obtener_canciones())
+                print("Catálogo guardado en binario.")
+                #print("pendiente implementar binario.")
+
+            elif sub =="d":
+                #print("pendiente implementar binario.")
+                biblioteca.canciones = cargar_binario("data/canciones.bin")
+                print("Catálogo cargado desde binario.")
         else:
             print("Opción inválida.")
 
