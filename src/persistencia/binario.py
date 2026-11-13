@@ -62,8 +62,8 @@ def cargar_binario(ruta):
             datos = archivo.read(FORMATO.size)
             if len(datos) < FORMATO.size:
                 raise ArchivoInvalidoError("El archivo está incompleto o corrupto.")
-        cancion = tupla_a_cancion(FORMATO.unpack(datos))
-        canciones.insertar_al_final(cancion)
+            cancion = tupla_a_cancion(FORMATO.unpack(datos))
+            canciones.insertar_al_final(cancion)
     return canciones
 
 """Posición de un registro por id (acceso directo). Devuelve -1 si no se encuentra."""
