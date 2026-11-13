@@ -44,7 +44,7 @@ def guardar_binario(ruta, canciones):
         for cancion in canciones:
             archivo.write(FORMATO.pack(*cancion_a_tupla(cancion)))
 
-    raise NotImplementedError
+   # raise NotImplementedError
 
 """Carga un archivo binario y devuelve una lista enlazada de canciones."""
 def cargar_binario(ruta):
@@ -89,4 +89,4 @@ def actualizar_registro(ruta, posicion, cancion):
         archivo.write(FORMATO.pack(*cancion_a_tupla(cancion)))
         
 
-    raise NotImplementedError
+   # raise NotImplementedError
