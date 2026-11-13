@@ -11,7 +11,7 @@ from src.persistencia.binario import (guardar_binario, cargar_binario,actualizar
 
 class Biblioteca:
     def __init__(self):
-        self.capacidad_maxima = 10
+        self.capacidad_maxima = 100
         self.canciones = ListaEnlazada()
         self.coleccion_principal = ListaEnlazada()
 
@@ -23,7 +23,7 @@ class Biblioteca:
         self.cargar_desde_csv("data/canciones.csv")
     def cargar_desde_csv(self, ruta):
 
-        filas = cargar_csv("data/canciones.csv")
+        filas = cargar_csv(ruta)
 
         for fila in filas:
 
