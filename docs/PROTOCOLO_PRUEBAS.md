@@ -24,6 +24,6 @@ Mínimos: 8 casos escritos en E2; ejecutados en E3; 15 de regresión en E6 (pila
 | P14 | E4 | Búsqueda lineal de un nombre que no existe |  | no encontrado, sin traceback |Mensaje de canción no encontrada  | Pasa |
 | P15 | E4 | Búsqueda binaria con catálogo desordenado |  | avisa o reordena; no da un falso hit | Si la cancion existe la muestra, sino, mensaje. |Pasa  |
 | P16 | E4 | Ordenar por un criterio y después por otro |  | el orden cambia |Muestra lista ordenada, según criterio elegido  | Pasa |
-| P17 | E5 | Guardar CSV, salir, volver a entrar |  | los datos siguen |  |  |
-| P18 | E5 | Guardar binario y modificar un registro por id |  | al recargar, ese campo cambió |  |  |
-| P19 | E5 | Abrir un binario truncado o con magia mala | archivo basura | excepción de archivo inválido |  |  |
+| P17 | E5 | Guardar CSV, salir, volver a entrar | Alta nueva canción / guardar / cerrar programa (0) y volver a ejecutarlo |Al listar tras reiniciar, la canción nueva debe persistir en el catálogo. | El catálogo cargó el listado de canciones, conservando el registro agregado tras el reinicio. | Pasa |
+| P18 | E5 | Guardar binario y modificar un registro por id | Guardar catálogo en data/canciones.bin /  modificar título de ID 1 a "PRUEBA_BINARIO" / recargar desde binario  y listar | Se sobrescribe únicamente el registro ID 1 y al recargar .bin se visualiza el nuevo título | El archivo binario actualizó por posición el ID 1 y lo recargó sin errores | Pasa  |
+| P19 | E5 | Abrir un binario truncado o con magia mala | Sobrescribir data/canciones.bin con texto inválido e intentar cargar desde binario | El sistema debe capturar ArchivoInvalidoError, informar el error por consola y volver al menú sin interrumpir la ejecución |Mostró el mensaje "Archivo inválido: Binario truncado: header incompleto" y regresó limpiamente al menú principal  |  Pasa |
