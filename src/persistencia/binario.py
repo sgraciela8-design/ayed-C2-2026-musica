@@ -1,4 +1,49 @@
+"""Registros de longitud fija con struct. (Documentar en docs/INFORME.md)"""
+
+import struct
 from pathlib import Path
+from src.dominio.cancion import Cancion
+from src.excepciones import ArchivoInvalidoError
+from src.tads.lista_enlazada import ListaEnlazada
+
+HEADER = struct.Struct("<4scI")  # 4 bytes magia, 1 byte tema, 4 bytes cantidad
+FORMATO = struct.Struct("<I30s25s30sH")  # id, titulo, artista, album, anio
+
+MAGIA = b"AYED"
+TEMA = b"M"
+
+
+def a_bytes(texto, ancho):
+    return str(texto).encode("utf-8")[:ancho].ljust(ancho, b"\x00")
+
+
+def a_texto(datos):
+    return datos.rstrip(b"\x00").decode("utf-8")
+
+
+def cancion_a_tupla(cancion):
+    return (
+        cancion.id,
+        a_bytes(cancion.titulo, 30),
+        a_bytes(cancion.artista, 25),
+        a_bytes(cancion.album, 30),
+        int(cancion.anio),
+    )
+
+
+def tupla_a_cancion(datos):
+    id_cancion, titulo, artista, album, anio = datos
+    return Cancion(
+        id_cancion, a_texto(titulo), a_texto(artista), a_texto(album), anio
+    )
+
+
+def guardar_binario(ruta, canciones):
+    ruta = Path(ruta)
+    with ruta.open("wb") as archivo:
+        archivo.write(HEADER.pack(MAGIA, TEMA, canciones.tamanio()))
+        for cancion in canciones:
+            archivo.write(FORMATO.pack(*cancion_a_tupla(cancion)))
 
 
 def cargar_binario(ruta):
@@ -12,7 +57,7 @@ def cargar_binario(ruta):
         if len(cabecera) < HEADER.size:
             raise ArchivoInvalidoError(
                 "Binario truncado: header incompleto."
-            )  #[cite: 34]
+            )  #[cite: 13]
 
         magia, tema, cantidad = HEADER.unpack(cabecera)
         if magia != MAGIA or tema != TEMA:
@@ -23,10 +68,19 @@ def cargar_binario(ruta):
         for _ in range(cantidad):
             datos = archivo.read(FORMATO.size)
             if len(datos) < FORMATO.size:
-                raise ArchivoInvalidoError("El archivo está incompleto o corrupto.")
+                raise ArchivoInvalidoError(
+                    "El archivo está incompleto o corrupto."
+                )
             cancion = tupla_a_cancion(FORMATO.unpack(datos))
             canciones.insertar_al_final(cancion)
     return canciones
+
+
+def posicion_del_id(canciones, id_buscado):
+    for posicion, cancion in enumerate(canciones):
+        if cancion.id == id_buscado:
+            return posicion
+    raise ValueError(f"No existe el ID {id_buscado} en la lista de canciones.")
 
 
 def actualizar_registro(ruta, posicion, cancion):
@@ -41,3 +95,4 @@ def actualizar_registro(ruta, posicion, cancion):
         desplazamiento = HEADER.size + posicion * FORMATO.size
         archivo.seek(desplazamiento)
         archivo.write(FORMATO.pack(*cancion_a_tupla(cancion)))
+        
