@@ -1,3 +1,5 @@
+from src.persistencia.binario import cargar_binario, guardar_binario
+from src.persistencia.texto import cargar_csv, guardar_csv
 #from src.algoritmos import ordenamiento
 from src.config import TEMA
 from src.dominio.cancion import Cancion

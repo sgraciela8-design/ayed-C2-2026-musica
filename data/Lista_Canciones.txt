@@ -66,3 +66,4 @@ id,titulo,artista,album,anio
 65,Yellow (Live),Coldplay,Live 2003,2003
 66,Blank Space (Acoustic),Taylor Swift,1989,2014
 67,Get Lucky (Daft Punk Remix),Daft Punk,Random Access Memories,2013
+70,Prueba alta,Prueba alta,prueba alta,2026
