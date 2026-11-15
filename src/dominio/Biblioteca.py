@@ -1,68 +1,49 @@
 
+from pathlib import Path
 from src.dominio.cancion import Cancion
+from src.excepciones import ArchivoInvalidoError, ColeccionLlenaError
+from src.persistencia.binario import (
+    actualizar_registro,
+    cargar_binario,
+    guardar_binario,
+    posicion_del_id,
+)
+from src.persistencia.texto import cargar_csv, guardar_csv
 from src.tads.lista_enlazada import ListaEnlazada
-from src.excepciones import ColeccionLlenaError
+
+# Rutas ancladas a la raíz del proyecto (evita FileNotFoundError)
+RAIZ = Path(__file__).resolve().parents[2]
+DATA = RAIZ / "data"
+RUTA_TXT = DATA / "Lista_Canciones.txt"  # Unificamos un solo archivo de texto
+RUTA_BIN = DATA / "canciones.bin"
+ENCABEZADOS = ["id", "titulo", "artista", "album", "anio"]
 
 
 class Biblioteca:
+
     def __init__(self):
-        self.capacidad_maxima = 10
+        self.capacidad_maxima = 100
         self.canciones = ListaEnlazada()
         self.coleccion_principal = ListaEnlazada()
+        self.versiones_directas = {1: [2], 2: [3]}
 
-        self.versiones_directas = {
-            1: [2],
-            2: [3]
-        }
+        # Al arrancar carga desde el archivo de texto
+        self.cargar_desde_csv(RUTA_TXT)
 
-        self.cargar_canciones_iniciales()
+    def cargar_desde_csv(self, ruta=RUTA_TXT):
+        filas = cargar_csv(ruta)
+        self.canciones = ListaEnlazada()  # Limpia antes de cargar
+        for fila in filas:
+            cancion = Cancion(
+                fila["id"],
+                fila["titulo"],
+                fila["artista"],
+                fila["album"],
+                fila["anio"],
+            )
+            self.canciones.insertar_al_final(cancion)
 
-    def cargar_canciones_iniciales(self):
-        self.canciones.insertar_al_final(
-            Cancion(1, "Crimen", "Gustavo Cerati", "Fuerza natural", "2006")
-        )
-        self.canciones.insertar_al_final(
-            Cancion(2, "Adios", "Gustavo Cerati", "Fuerza natural", "2006")
-        )
-        self.canciones.insertar_al_final(
-            Cancion(3, "Here Comes the Sun", "The Beatles", "Abbey Road", "1969")
-        )
-        self.canciones.insertar_al_final(
-            Cancion(4, "Creep", "Radiohead", "Album de estudio", "1992")
-        )
-        self.canciones.insertar_al_final(
-            Cancion(5, "505", "Arctic Monkeys", "Favorite Worst Nightmare", "2007")
-        )
-        self.canciones.insertar_al_final(
-            Cancion(6, "Demoliendo Hoteles", "Charly García", "Piano Bar", "1984")
-        )
-
-    def obtener_canciones(self):
-        return self.canciones
-
-    def obtener_canciones_como_lista(self):
-     #se genera una copia temporal sobre la que podemos aplicar ordenamiento por selección e insercion
-        canciones_lista = []
-
-        for cancion in self.canciones:
-            canciones_lista.append(cancion)
-
-        return canciones_lista
-
-        
-
-    def buscar_cancion_por_id(self, id_cancion):
-        for cancion in self.canciones:
-            if cancion.id == int(id_cancion):
-                return cancion
-        return None
-
-    def buscar_por_titulo(self, titulo):
-        for cancion in self.canciones:
-            if cancion.titulo.lower() == titulo.lower():
-                return cancion
-
-        return None
+    # ... (mantené igual obtener_filas, obtener_canciones, buscar_cancion_por_id, etc.) ...
 
     def agregar_cancion(self, cancion):
         if self.canciones.tamanio() >= self.capacidad_maxima:
@@ -70,27 +51,30 @@ class Biblioteca:
                 "La colección principal alcanzó su capacidad máxima."
             )
         self.canciones.insertar_al_final(cancion)
+        self.guardar_todo()
 
-    def obtener_coleccion_principal(self):
-        return self.coleccion_principal
+    def eliminar_cancion(self, id_cancion):
+        cancion = self.buscar_cancion_por_id(id_cancion)
+        if cancion is None:
+            return False
+        self.canciones.eliminar(cancion)
+        self.guardar_todo()
+        return True
 
-    def obtener_todas_las_versiones_recursivo(self, id_cancion):
-        id_cancion = int(id_cancion)
-        ids_derivados = self.versiones_directas.get(id_cancion, [])
+    def modificar_titulo(self, id_cancion, nuevo_titulo):
+        cancion = self.buscar_cancion_por_id(id_cancion)
+        if cancion is None:
+            return False
 
-        if not ids_derivados:
-            return []
+        cancion.titulo = nuevo_titulo
+        # Si existe el .bin, actualiza SOLO ese registro con seek (acceso directo)
+        if RUTA_BIN.exists():
+            posicion = posicion_del_id(self.canciones, int(id_cancion))
+            actualizar_registro(RUTA_BIN, posicion, cancion)
+        # Actualiza el texto secuencial
+        guardar_csv(RUTA_TXT, self.obtener_filas(), ENCABEZADOS)
+        return True
 
-        resultado = []
-
-        for id_derivado in ids_derivados:
-            cancion = self.buscar_cancion_por_id(id_derivado)
-
-            if cancion is not None:
-                resultado.append(cancion)
-
-            resultado += self.obtener_todas_las_versiones_recursivo(
-                id_derivado
-            )
-
-        return resultado
+    def guardar_todo(self):
+        guardar_csv(RUTA_TXT, self.obtener_filas(), ENCABEZADOS)
+        guardar_binario(RUTA_BIN, self.canciones)

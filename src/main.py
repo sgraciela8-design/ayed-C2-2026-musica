@@ -1,7 +1,7 @@
 #from src.algoritmos import ordenamiento
 from src.config import TEMA
-from src.dominio import cancion
-from src.dominio.Biblioteca import Biblioteca
+from src.dominio.cancion import Cancion
+from src.dominio.Biblioteca import Biblioteca, ENCABEZADOS, RUTA_BIN, RUTA_TXT
 from src.tads.cola import Cola
 from src.tads.pila import Pila
 from src.algoritmos.busqueda import (
@@ -12,7 +12,12 @@ from src.algoritmos.ordenamiento import(
     ordenar_seleccion_por_id,
     ordenar_insercion_por_titulo
 )
-from src.excepciones import ColaVaciaError, PilaVaciaError, ColeccionLlenaError
+from src.excepciones import (
+      ArchivoInvalidoError,
+      ColaVaciaError,
+      ColeccionLlenaError,
+      PilaVaciaError,
+  )
 
 TEMAS = {
     "pokedex": "Pokédex",
@@ -191,31 +196,64 @@ def ordenar():
         )
 
 
-def agregar_a_coleccion_principal():
-    """Opción 6, 7 y 8: Colección principal (playlist)"""
-    # Ejemplo solicitando id o elemento a agregar
-    try:   
-        id_elem = int(input("Ingresá el ID a agregar a la colección: "))
+def gestionar_abm_coleccion():
+    """Opción 6: Alta, Baja y Modificación persistentes."""
+    print("\n--- ABM DE CANCIONES (PERSISTENTE) ---")
+    print("1. Alta (agregar nueva canción)")
+    print("2. Baja (eliminar canción por ID)")
+    print("3. Modificación (editar título por ID - Acceso directo)")
+    print("4. Encolar canción existente para reproducir")
+    sub = input("Elegí una opción: ").strip()
 
-        # Aquí llamas al método de tu biblioteca/colección que agrega
-        cancion = biblioteca.buscar_cancion_por_id(id_elem)
-        
-        if cancion is None:
-            print("No existe una canción con ese ID.")
-            return
-        
-        biblioteca.agregar_cancion(cancion)
+    try:
+        if sub == "1":
+            id_nueva = int(input("ID de la nueva canción: "))
+            if biblioteca.buscar_cancion_por_id(id_nueva) is not None:
+                print("Ya existe una canción con ese ID.")
+                return
+            titulo = input("Título: ").strip()
+            artista = input("Artista: ").strip()
+            album = input("Álbum: ").strip()
+            anio = int(input("Año: "))
 
-        cola_reproduccion.encolar(cancion)
+            nueva = Cancion(id_nueva, titulo, artista, album, anio)
+            biblioteca.agregar_cancion(nueva)
+            print(f"Canción '{titulo}' agregada y guardada en disco.")
 
-        print(f"Agregada: {cancion.titulo}")
-        
+        elif sub == "2":
+            id_borrar = int(input("ID de la canción a eliminar: "))
+            if biblioteca.eliminar_cancion(id_borrar):
+                print("Canción eliminada y archivos actualizados.")
+            else:
+                print("No se encontró una canción con ese ID.")
+
+        elif sub == "3":
+            id_mod = int(input("ID de la canción a modificar: "))
+            nuevo_titulo = input("Nuevo título: ").strip()
+            if biblioteca.modificar_titulo(id_mod, nuevo_titulo):
+                print(
+                    "Título modificado (registro actualizado en binario y texto)."
+                )
+            else:
+                print("No se encontró una canción con ese ID.")
+
+        elif sub == "4":
+            id_elem = int(input("Ingresá el ID a encolar: "))
+            cancion = biblioteca.buscar_cancion_por_id(id_elem)
+            if cancion is None:
+                print("No existe una canción con ese ID.")
+                return
+            cola_reproduccion.encolar(cancion)
+            print(f"Encolada: {cancion.titulo}")
+        else:
+            print("Subopción inválida.")
+
     except ValueError:
-        print("ID inválido. Debe ser un número entero.")
-        
-    except ColeccionLlenaError:
-        print("La playlist alcanzo su capacidad máxima")
-
+        print("Error: Debes ingresar un valor numérico válido.")
+    except ColeccionLlenaError as e:
+        print(f"Error: {e}")
+    except ArchivoInvalidoError as e:
+        print(f"Error de archivo: {e}")
 
 def listar_catalogo():
     canciones = biblioteca.obtener_canciones()
@@ -303,13 +341,42 @@ def main():
         elif opcion == "5":
             operacion_recursiva() # Ahora ejecuta la función recursiva       
         elif opcion == "6":
-            agregar_a_coleccion_principal()
+            gestionar_abm_coleccion()
         elif opcion == "7":
             mostrar_historial()
         elif opcion == "8":
             atender_cola()
-        elif opcion in {"9"}:
-            print("Todavía no está implementado. Completar en la entrega que corresponde.")
+        elif opcion == "9":
+            print("\n--- ARCHIVOS ---")
+            print("a) Cargar catálogo desde texto")
+            print("b) Guardar catálogo en texto")
+            print("c) Guardar catálogo en binario")
+            print("d) Cargar catálogo desde binario")
+
+            sub = input("subopción > ").strip().lower()
+            try:
+                if sub == "a":
+                    biblioteca.cargar_desde_csv(RUTA_TXT)
+                    print(
+                        f"Catálogo cargado desde texto ({biblioteca.canciones.tamanio()} canciones)."
+                    )
+                elif sub == "b":
+                    guardar_csv(
+                        RUTA_TXT, biblioteca.obtener_filas(), ENCABEZADOS
+                    )
+                    print("Catálogo guardado en texto.")
+                elif sub == "c":
+                    guardar_binario(RUTA_BIN, biblioteca.obtener_canciones())
+                    print("Catálogo guardado en binario.")
+                elif sub == "d":
+                    biblioteca.canciones = cargar_binario(RUTA_BIN)
+                    print(
+                        f"Catálogo cargado desde binario ({biblioteca.canciones.tamanio()} canciones)."
+                    )
+                else:
+                    print("Subopción inválida.")
+            except ArchivoInvalidoError as e:
+                print(f"Archivo inválido: {e}")
         else:
             print("Opción inválida.")
 
