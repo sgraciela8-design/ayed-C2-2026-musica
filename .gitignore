@@ -1,3 +1,6 @@
 **/__pycache__/
 *.pyc
 .vscode/
+
+*_backup.bin
+*_backup.csv
