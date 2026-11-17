@@ -8,9 +8,9 @@ Fecha de esta versión del archivo:
 | --- | --- | --- | --- | --- | --- | --- |
 | E1 |  10/09/2026|browser modo IA |terminología, errores de código, docs git y github | 0 | 0 | Graciela / Franco |
 | E2 |20/09/2026  | browser modo IA | Definiciones, explicación de funciones y métodos en la recursividad | verificar errores de codigo|0  |Graciela  |
-| E3 | 03/10/2026 | copilot and google modo IA |Corregir lineas de código y errores de sintaxis, comparar correcciones  |  |  |Graciela / Julio|
-| E4 | 28/10/2026 |Gemini  |Corregir lineas de código y errores de sintaxis, comparar correcciones - Creación de medidor de tiempos |  |  |Julio  |
-| E5 | 15/11/2026 |Gemini  |Corregir lineas de código y errores de sintaxis, comparar correcciones  |  |  |Julio  |
-| E6 |  |  |  |  |  |  |
+| E3 | 03/10/2026 | copilot and google modo IA | Escribir y Corregir lineas de código y errores de sintaxis, comparar correcciones  |  |  |Graciela / Julio|
+| E4 | 28/10/2026 |copilot/Gemini  |Escribir y Corregir lineas de código y errores de sintaxis, comparar correcciones - Creación de medidor de tiempos |  |  |Graciela/Julio  |
+| E5 | 15/11/2026 |copilot/Gemini  |Escribir y Corregir lineas de código y errores de sintaxis, comparar correcciones  |  |  |Graciela / Julio  |
+| E6 |20/11/2026 |Copilot  |guia paso a paso para prueba de Protocolo  |  |  | Graciela |
 
 Compromiso: cualquiera del grupo puede explicar cualquier archivo del tag.

@@ -108,11 +108,37 @@ Se realizaron mediciones sobre el dataset original ($n = 6$) y sobre una copia a
 ## 6. Persistencia (E5)
 
 - Layout del registro binario (campos, `struct`, anchos):
-- Header:
+La persitencia binaria se implementó utilizando el módulo 'struct' de Python con reistros de longitud fija para permitir acceso directo a cualquier canción.
+Se definió el siguiente formato:
+''' Python 
+Formato = struct.Struct("<I30s25s30sH")
+'''
+Campos almacenados:
+|Campo   |  Tipo  |  Tamaño
+|---------|---------|---------|
+id    |unsigned int(I) | 4 bytes |
+titulo|  cadena fija   |30 bytes |
+artista| cadena fija   |25 bytes |
+album  | cadena fija   |30 bytes |
+anio   | unsigned short (H)|2 bytes|
+- Header: El archivo binario comienza con una cabecera definida mediante: HEADER = struct.Struct("<4scI>)
+La cabecera ocupa 9 bytes y contiene:
+MAGIA ("AYED"): 4bytes
+TEMA ("M"): 1 byte
+Cantidad de registros almacenados: 4 bytes
+su función es validar que el archivo pertenece al proyecto y conocer cuántas canciones deben leerse durante la carga.
+Al abrie el archivo se verifica que la firma ("AYED") y el identificador ("M") coincida con los valores esperados. Si la validación falla, se lanza la excepción ArchivoInvalidoError.
 - Cómo se actualiza un registro por posición:
-
+La actualización de una canción en el archivo binario se realiza mediante acceso directo. Primero se busca la posición de la canción utilizando su ID con la función posicion_del_id(), luego se calcula el desplazamiento dentro del archivo binario:
+desplazamiento = HEADER.size + posicion*FORMATO.size.
+Luego se utiliza seek() para mover el cursor exactamente al comienzo del registro que se desea modificar:
+archivo.seek(desplazamiento)
+Finalmente se sobreescribe ese registro con los nuevos datos utilizando:
+archivo.write(FORMATO.pack(...))
+Como todos los registros tiene tamaño fijo, es posible acceder directamente a cualquier canción sin necesidad de reescribir el archivo completo, lo que mejora la eficiencia de las modificaciones
+ 
 ## 7. Reparto de trabajo (E6)
 
 | Integrante | Qué hizo | Qué puede defender |
-| --- | --- | --- |
+| Graciela |---| --- |
 |  |  |  |

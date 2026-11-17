@@ -22,8 +22,8 @@ from src.excepciones import (
   )
 
 TEMAS = {
-    "pokedex": "Pokédex",
-    "recetario": "Recetario",
+    #"pokedex": "Pokédex",
+    #"recetario": "Recetario",
     "musica": "Biblioteca musical",
 }
 
@@ -112,7 +112,7 @@ def buscar_por_id(): #opcion 3
         cancion = busqueda_lineal_por_id(canciones, id_cancion)
 
         if cancion is None:
-            print(3)
+            print("No se encontró canción con ese ID.")
             return
         
         print(f"ID: {cancion.id}")
@@ -133,7 +133,7 @@ def buscar_por_titulo(): #opción 3
     cancion  = busqueda_lineal_por_titulo(canciones, titulo)
 
     if cancion is None:
-        print("No se encontró la cancion.")
+        print("No se encontró la canción.")
         return
 
     print(f"ID: {cancion.id}")

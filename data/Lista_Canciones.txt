@@ -26,7 +26,7 @@ id,titulo,artista,album,anio
 25,Natacha,Wos,Oscuro Extasis,2019
 26,Canguros,Wos,Tres Puntos Suspensivos,2021
 27,Buenos Aires,Nathy Peluso,Calambre,2020
-28,Despecha,Rosalia,Motomami,2022
+28,Thriller,Rosalia,Motomami,2022
 29,Titi Me Pregunto,Bad Bunny,Un Verano Sin Ti,2022
 30,Anti-Hero,Taylor Swift,Midnights,2022
 31,Blank Space,Taylor Swift,1989,2014
@@ -52,7 +52,7 @@ id,titulo,artista,album,anio
 51,Billie Jean,Michael Jackson,Thriller,1982
 52,Billie Jean (Remix),Michael Jackson,Thriller 40,2022
 53,Clocks,Coldplay,A Rush of Blood to the Head,2002
-54,Yellow,Coldplay,Parachutes,2000
+54,Amarillo,Coldplay,Parachutes,2000
 55,Creep,Radiohead,Pablo Honey,1992
 56,Karma Police,Radiohead,OK Computer,1997
 57,Vino Griego,Los Abuelos de la Nada,Vasos y Besos,1983
@@ -63,6 +63,6 @@ id,titulo,artista,album,anio
 62,De Musica Ligera (Unplugged),Soda Stereo,Comfort y Musica Para Volar,1996
 63,Flaca (En vivo),Andres Calamaro,Vivo,2000
 64,Creep (Live),Radiohead,The Astoria London,1994
-65,Yellow (Live),Coldplay,Live 2003,2003
 66,Blank Space (Acoustic),Taylor Swift,1989,2014
 67,Get Lucky (Daft Punk Remix),Daft Punk,Random Access Memories,2013
+68,Evil Woman,Electric Light Orchestra,Face the Music,1975
