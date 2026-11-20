@@ -43,7 +43,7 @@ Inmutable es todo lo contrario, no se pueden modificar sus datos una vez creado,
   3. `resultado = [3]`.
   4. Entra al bucle para `v = 3` y ejecuta la **Segunda Llamada**: `versiones_de(versionable, 3)`.
      
-     **Segunda Llamada (id_cancion = 13):**
+     **Segunda Llamada (id_cancion = 3):**
      1. `versionable.versiones_directas(3)` devuelve `[4]`.
      2. `resultado = [4]`.
      3. Entra al bucle para `v = 4` y ejecuta la **Tercera Llamada**: `versiones_de(versionable, 4)`.
@@ -108,7 +108,7 @@ Se realizaron mediciones sobre el dataset original ($n = 6$) y sobre una copia a
 ## 6. Persistencia (E5)
 
 - Layout del registro binario (campos, `struct`, anchos):
-La persitencia binaria se implementó utilizando el módulo 'struct' de Python con reistros de longitud fija para permitir acceso directo a cualquier canción.
+La persitencia binaria se implementó utilizando el módulo 'struct' de Python con registros de longitud fija para permitir acceso directo a cualquier canción.
 Se definió el siguiente formato:
 ''' Python 
 Formato = struct.Struct("<I30s25s30sH")
@@ -140,5 +140,6 @@ Como todos los registros tiene tamaño fijo, es posible acceder directamente a c
 ## 7. Reparto de trabajo (E6)
 
 | Integrante | Qué hizo | Qué puede defender |
-| Graciela |---| --- |
-|  |  |  |
+| Graciela |E1 - E6| Arquitectura de capas y flujo de datos |
+| Julio |E1 - E6  | Revisión de código  pruebas de protocolo  |
+| Franco |E1 - E2 | Revisión de código  |
