@@ -69,6 +69,10 @@ Inmutable es todo lo contrario, no se pueden modificar sus datos una vez creado,
 | Cola |encolar(), desencolar(), ver_frente(), esta_vacia()  | El primer elemento agregado es el primero en salir (FIFO). No se puede desencolar una cola vacía. |
 
 Dónde se usa cada uno en el dominio.
+TAD Lista Enlazada: para almacenar colecciones dinámicas de canciones, para representar listas de reproducción, para recorrer canciones sin necesidad de conocer de antemano cuántas hay.
+Permite agregar elementos de forma dinámica sin necesidad de redimensionar estructuras como en un arreglo.
+TAD Pila: en el historial de navegación o reproducción para registrar canciones recientes que podrán deshacerse.
+TAD Cola: en la cola de reproducción para gestionar canciones pendientes y reproducir temas respetando el orden de solicitud
 
 ## 5. Complejidad (E4)
 
